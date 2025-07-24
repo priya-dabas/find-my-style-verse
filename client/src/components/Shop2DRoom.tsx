@@ -303,96 +303,172 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
         <div className="relative h-[calc(100vh-5rem)] max-w-md mx-auto">
           {/* Four Corner Categories */}
           
-          {/* Top Left Category */}
-          <div className="absolute top-4 left-4 w-24 h-24 sm:w-28 sm:h-28">
-            <Card className="h-full bg-white shadow-lg border-2" style={{ borderColor: shop.color }}>
-              <CardContent className="p-2 h-full flex flex-col items-center justify-center">
-                <div className="text-lg mb-1">
-                  {shop.sections[0] && getProductEmoji(shop.sections[0].name)}
-                </div>
-                <p className="text-xs font-bold text-center leading-tight">
+          {/* Top Left Category - Clean Vertical Stack */}
+          <div className="absolute top-4 left-4 w-28 h-40">
+            <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-3">
+              <div className="text-center mb-3">
+                <h4 className="text-sm font-bold text-gray-800 leading-tight">
                   {shop.sections[0]?.name || 'Category 1'}
-                </p>
-                <div className="grid grid-cols-5 gap-0.5 mt-1">
-                  {shop.sections[0]?.products.slice(0, 5).map((product, idx) => (
-                    <div 
-                      key={idx}
-                      className="w-2 h-2 bg-gray-300 rounded-full cursor-pointer hover:bg-blue-400 transition-colors"
-                      onClick={() => setSelectedProduct(product)}
-                    />
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                </h4>
+              </div>
+              
+              {/* 3 Products Stacked Vertically - Bigger Cards */}
+              <div className="flex flex-col gap-2">
+                {shop.sections[0]?.products.slice(0, 3).map((product, idx) => (
+                  <div 
+                    key={idx}
+                    className="relative bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-2 border-2 border-blue-200 hover:border-blue-400 cursor-pointer transition-all hover:shadow-md hover:scale-105"
+                    onClick={() => setSelectedProduct(product)}
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="text-lg flex-shrink-0">{getProductEmoji(shop.sections[0]?.name || '')}</div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs font-bold text-gray-800 truncate">{product.name}</div>
+                        <div className="text-xs font-semibold text-green-600">₹{product.price}</div>
+                      </div>
+                    </div>
+                    {/* Try-on button */}
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="absolute -top-1 -right-1 w-5 h-5 p-0 bg-blue-500 hover:bg-blue-600 border-0 text-white rounded-full shadow-md"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleTryOn(product);
+                      }}
+                    >
+                      <HelpCircle className="w-2.5 h-2.5" />
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Top Right Category */}
-          <div className="absolute top-4 right-4 w-24 h-24 sm:w-28 sm:h-28">
-            <Card className="h-full bg-white shadow-lg border-2" style={{ borderColor: shop.color }}>
-              <CardContent className="p-2 h-full flex flex-col items-center justify-center">
-                <div className="text-lg mb-1">
-                  {shop.sections[1] && getProductEmoji(shop.sections[1].name)}
-                </div>
-                <p className="text-xs font-bold text-center leading-tight">
+          {/* Top Right Category - Clean Vertical Stack */}
+          <div className="absolute top-4 right-4 w-28 h-40">
+            <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-3">
+              <div className="text-center mb-3">
+                <h4 className="text-sm font-bold text-gray-800 leading-tight">
                   {shop.sections[1]?.name || 'Category 2'}
-                </p>
-                <div className="grid grid-cols-5 gap-0.5 mt-1">
-                  {shop.sections[1]?.products.slice(0, 5).map((product, idx) => (
-                    <div 
-                      key={idx}
-                      className="w-2 h-2 bg-gray-300 rounded-full cursor-pointer hover:bg-blue-400 transition-colors"
-                      onClick={() => setSelectedProduct(product)}
-                    />
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                </h4>
+              </div>
+              
+              {/* 3 Products Stacked Vertically - Bigger Cards */}
+              <div className="flex flex-col gap-2">
+                {shop.sections[1]?.products.slice(0, 3).map((product, idx) => (
+                  <div 
+                    key={idx}
+                    className="relative bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-2 border-2 border-purple-200 hover:border-purple-400 cursor-pointer transition-all hover:shadow-md hover:scale-105"
+                    onClick={() => setSelectedProduct(product)}
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="text-lg flex-shrink-0">{getProductEmoji(shop.sections[1]?.name || '')}</div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs font-bold text-gray-800 truncate">{product.name}</div>
+                        <div className="text-xs font-semibold text-green-600">₹{product.price}</div>
+                      </div>
+                    </div>
+                    {/* Try-on button */}
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="absolute -top-1 -right-1 w-5 h-5 p-0 bg-blue-500 hover:bg-blue-600 border-0 text-white rounded-full shadow-md"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleTryOn(product);
+                      }}
+                    >
+                      <HelpCircle className="w-2.5 h-2.5" />
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Bottom Left Category */}
-          <div className="absolute bottom-20 left-4 w-24 h-24 sm:w-28 sm:h-28">
-            <Card className="h-full bg-white shadow-lg border-2" style={{ borderColor: shop.color }}>
-              <CardContent className="p-2 h-full flex flex-col items-center justify-center">
-                <div className="text-lg mb-1">
-                  {shop.sections[2] && getProductEmoji(shop.sections[2].name)}
-                </div>
-                <p className="text-xs font-bold text-center leading-tight">
+          {/* Bottom Left Category - Clean Vertical Stack */}
+          <div className="absolute bottom-20 left-4 w-28 h-40">
+            <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-3">
+              <div className="text-center mb-3">
+                <h4 className="text-sm font-bold text-gray-800 leading-tight">
                   {shop.sections[2]?.name || 'Category 3'}
-                </p>
-                <div className="grid grid-cols-5 gap-0.5 mt-1">
-                  {shop.sections[2]?.products.slice(0, 5).map((product, idx) => (
-                    <div 
-                      key={idx}
-                      className="w-2 h-2 bg-gray-300 rounded-full cursor-pointer hover:bg-blue-400 transition-colors"
-                      onClick={() => setSelectedProduct(product)}
-                    />
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                </h4>
+              </div>
+              
+              {/* 3 Products Stacked Vertically - Bigger Cards */}
+              <div className="flex flex-col gap-2">
+                {shop.sections[2]?.products.slice(0, 3).map((product, idx) => (
+                  <div 
+                    key={idx}
+                    className="relative bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-2 border-2 border-green-200 hover:border-green-400 cursor-pointer transition-all hover:shadow-md hover:scale-105"
+                    onClick={() => setSelectedProduct(product)}
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="text-lg flex-shrink-0">{getProductEmoji(shop.sections[2]?.name || '')}</div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs font-bold text-gray-800 truncate">{product.name}</div>
+                        <div className="text-xs font-semibold text-green-600">₹{product.price}</div>
+                      </div>
+                    </div>
+                    {/* Try-on button */}
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="absolute -top-1 -right-1 w-5 h-5 p-0 bg-blue-500 hover:bg-blue-600 border-0 text-white rounded-full shadow-md"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleTryOn(product);
+                      }}
+                    >
+                      <HelpCircle className="w-2.5 h-2.5" />
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Bottom Right Category */}
-          <div className="absolute bottom-20 right-4 w-24 h-24 sm:w-28 sm:h-28">
-            <Card className="h-full bg-white shadow-lg border-2" style={{ borderColor: shop.color }}>
-              <CardContent className="p-2 h-full flex flex-col items-center justify-center">
-                <div className="text-lg mb-1">
-                  {shop.sections[3] && getProductEmoji(shop.sections[3].name)}
-                </div>
-                <p className="text-xs font-bold text-center leading-tight">
+          {/* Bottom Right Category - Clean Vertical Stack */}
+          <div className="absolute bottom-20 right-4 w-28 h-40">
+            <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-3">
+              <div className="text-center mb-3">
+                <h4 className="text-sm font-bold text-gray-800 leading-tight">
                   {shop.sections[3]?.name || 'Category 4'}
-                </p>
-                <div className="grid grid-cols-5 gap-0.5 mt-1">
-                  {shop.sections[3]?.products.slice(0, 5).map((product, idx) => (
-                    <div 
-                      key={idx}
-                      className="w-2 h-2 bg-gray-300 rounded-full cursor-pointer hover:bg-blue-400 transition-colors"
-                      onClick={() => setSelectedProduct(product)}
-                    />
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                </h4>
+              </div>
+              
+              {/* 3 Products Stacked Vertically - Bigger Cards */}
+              <div className="flex flex-col gap-2">
+                {shop.sections[3]?.products.slice(0, 3).map((product, idx) => (
+                  <div 
+                    key={idx}
+                    className="relative bg-gradient-to-r from-orange-50 to-amber-50 rounded-lg p-2 border-2 border-orange-200 hover:border-orange-400 cursor-pointer transition-all hover:shadow-md hover:scale-105"
+                    onClick={() => setSelectedProduct(product)}
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="text-lg flex-shrink-0">{getProductEmoji(shop.sections[3]?.name || '')}</div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs font-bold text-gray-800 truncate">{product.name}</div>
+                        <div className="text-xs font-semibold text-green-600">₹{product.price}</div>
+                      </div>
+                    </div>
+                    {/* Try-on button */}
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="absolute -top-1 -right-1 w-5 h-5 p-0 bg-blue-500 hover:bg-blue-600 border-0 text-white rounded-full shadow-md"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleTryOn(product);
+                      }}
+                    >
+                      <HelpCircle className="w-2.5 h-2.5" />
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Central Meera Avatar - Exactly like wireframe */}

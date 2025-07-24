@@ -93,12 +93,73 @@ export const GameifiedMall = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-400 flex flex-col">
+    <div className="min-h-screen bg-green-400 flex flex-col relative overflow-hidden">
       {/* Sky Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-blue-300 to-blue-400"></div>
       
-      {/* Ground */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gray-600"></div>
+      {/* Marketplace Ground Pattern */}
+      <div className="absolute inset-0">
+        {/* Green grass base */}
+        <div className="absolute inset-0 bg-green-400"></div>
+        
+        {/* Stone pavement areas */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gray-400">
+          {/* Stone tile pattern */}
+          <div className="absolute inset-0 grid grid-cols-8 gap-px opacity-30">
+            {Array.from({length: 32}, (_, i) => (
+              <div key={i} className="bg-gray-500 border border-gray-600"></div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Stone pathways */}
+        <div className="absolute bottom-32 left-0 right-0 h-24 bg-gray-500 opacity-40">
+          <div className="absolute inset-0 grid grid-cols-12 gap-px">
+            {Array.from({length: 36}, (_, i) => (
+              <div key={i} className="bg-gray-400 border border-gray-600"></div>
+            ))}
+          </div>
+        </div>
+      </div>
+      
+      {/* Decorative Trees */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Left side trees */}
+        <div className="absolute top-20 left-4">
+          <div className="w-8 h-12 relative">
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-4 bg-amber-700"></div>
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-green-500 rounded-full border-2 border-green-600"></div>
+          </div>
+        </div>
+        <div className="absolute top-40 left-2">
+          <div className="w-6 h-10 relative">
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1.5 h-3 bg-amber-700"></div>
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-green-500 rounded-full border border-green-600"></div>
+          </div>
+        </div>
+        
+        {/* Right side trees */}
+        <div className="absolute top-24 right-4">
+          <div className="w-8 h-12 relative">
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-4 bg-amber-700"></div>
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-green-500 rounded-full border-2 border-green-600"></div>
+          </div>
+        </div>
+        <div className="absolute top-44 right-2">
+          <div className="w-6 h-10 relative">
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1.5 h-3 bg-amber-700"></div>
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-green-500 rounded-full border border-green-600"></div>
+          </div>
+        </div>
+        
+        {/* Background trees scattered */}
+        <div className="absolute top-16 left-1/3">
+          <div className="w-5 h-8 relative opacity-60">
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-2 bg-amber-700"></div>
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-5 h-5 bg-green-500 rounded-full border border-green-600"></div>
+          </div>
+        </div>
+      </div>
       
       {/* Mobile Header */}
       <div className="relative z-10 text-center pt-8 pb-4">
@@ -143,12 +204,12 @@ export const GameifiedMall = () => {
                   className="cursor-pointer hover:scale-105 transition-transform duration-300"
                   onClick={() => setSelectedShop(shop.id)}
                 >
-                  {/* Pixel Art Shop Building - Full size maintained */}
-                  <div className="w-32 h-40 relative">
+                  {/* Pixel Art Shop Building - Increased size */}
+                  <div className="w-40 h-48 relative">
                     {/* Shop Sign */}
-                    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
-                      <div className="bg-white border-4 border-black px-3 py-1">
-                        <div className="text-red-600 font-bold text-xs text-center leading-tight">
+                    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-20">
+                      <div className="bg-white border-4 border-black px-4 py-2">
+                        <div className="text-red-600 font-bold text-sm text-center leading-tight">
                           {shopNames[index]}
                         </div>
                       </div>
@@ -224,12 +285,12 @@ export const GameifiedMall = () => {
                   className="cursor-pointer hover:scale-105 transition-transform duration-300"
                   onClick={() => setSelectedShop(shop.id)}
                 >
-                  {/* Pixel Art Shop Building - Full size maintained */}
-                  <div className="w-32 h-40 relative">
+                  {/* Pixel Art Shop Building - Increased size */}
+                  <div className="w-40 h-48 relative">
                     {/* Shop Sign */}
-                    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
-                      <div className="bg-white border-4 border-black px-3 py-1">
-                        <div className="text-red-600 font-bold text-xs text-center leading-tight">
+                    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-20">
+                      <div className="bg-white border-4 border-black px-4 py-2">
+                        <div className="text-red-600 font-bold text-sm text-center leading-tight">
                           HOME DECOR
                         </div>
                       </div>

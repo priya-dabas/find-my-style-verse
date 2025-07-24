@@ -130,87 +130,171 @@ export const GameifiedMall = () => {
         </div>
       </div>
 
-      {/* Flex Container for Shops - Optimized for 9:16 */}
-      <div className="relative z-10 flex-1 flex items-center justify-center pb-20">
-        <div className="flex gap-2 px-4 overflow-x-auto w-full justify-center">
-          {gameShopData.map((shop, index) => {
-            const shopNames = ['WESTERN', 'ETHNIC', 'HOME DECOR'];
-            return (
-              <div 
-                key={shop.id}
-                className="cursor-pointer hover:scale-105 transition-transform duration-300 flex-shrink-0"
-                onClick={() => setSelectedShop(shop.id)}
-              >
-                {/* Pixel Art Shop Building - Smaller for mobile */}
-                <div className="w-24 h-32 relative">
-                  {/* Shop Sign */}
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
-                    <div className="bg-white border-2 border-black px-2 py-0.5">
-                      <div className="text-red-600 font-bold text-[10px] text-center leading-tight">
-                        {shopNames[index]}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Brick Building */}
-                  <div className="w-full h-full relative bg-orange-600 border-2 border-black">
-                    {/* Brick Pattern */}
-                    <div className="absolute inset-0.5 grid grid-cols-3 gap-px">
-                      {Array.from({length: 12}, (_, i) => (
-                        <div key={i} className="bg-orange-500 border border-orange-700"></div>
-                      ))}
-                    </div>
-                    
-                    {/* Striped Awning */}
-                    <div className="absolute -top-2 left-1 right-1 h-3 flex border-2 border-black">
-                      {Array.from({length: 6}, (_, i) => (
-                        <div key={i} className={`flex-1 ${i % 2 === 0 ? 'bg-red-500' : 'bg-white'}`}></div>
-                      ))}
-                    </div>
-                    
-                    {/* Windows */}
-                    <div className="absolute top-3 left-1 w-3 h-3 bg-blue-200 border border-blue-800">
-                      <div className="absolute inset-0.5 bg-blue-100"></div>
-                    </div>
-                    
-                    {/* Large Glass Door/Window */}
-                    <div className="absolute top-3 right-1 bottom-6 w-8 bg-blue-200 border border-blue-800">
-                      <div className="absolute inset-0.5 bg-gradient-to-br from-blue-100 to-blue-200">
-                        {/* Glass reflection effect */}
-                        <div className="absolute top-0.5 left-0.5 w-1 h-4 bg-white/50"></div>
-                        <div className="absolute top-0.5 right-0.5 w-0.5 h-3 bg-white/30"></div>
-                      </div>
-                      {/* Door handles */}
-                      <div className="absolute top-1/2 left-0.5 w-0.5 h-0.5 bg-gray-700 rounded-full"></div>
-                      <div className="absolute top-1/2 right-0.5 w-0.5 h-0.5 bg-gray-700 rounded-full"></div>
-                    </div>
-                    
-                    {/* Shop Display Window */}
-                    <div className="absolute bottom-6 left-1 w-3 h-4 bg-yellow-100 border border-gray-800">
-                      <div className="absolute inset-0.5 bg-yellow-50 flex items-center justify-center">
-                        <div className="text-[8px]">📦</div>
+      {/* 2-1 Shop Layout - 2 shops top row, 1 centered below */}
+      <div className="relative z-10 flex-1 flex items-center justify-center pb-20 px-4">
+        <div className="flex flex-col items-center gap-16">
+          {/* Top Row - 2 Shops */}
+          <div className="flex gap-8">
+            {gameShopData.slice(0, 2).map((shop, index) => {
+              const shopNames = ['WESTERN', 'ETHNIC'];
+              return (
+                <div 
+                  key={shop.id}
+                  className="cursor-pointer hover:scale-105 transition-transform duration-300"
+                  onClick={() => setSelectedShop(shop.id)}
+                >
+                  {/* Pixel Art Shop Building - Full size maintained */}
+                  <div className="w-32 h-40 relative">
+                    {/* Shop Sign */}
+                    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
+                      <div className="bg-white border-4 border-black px-3 py-1">
+                        <div className="text-red-600 font-bold text-xs text-center leading-tight">
+                          {shopNames[index]}
+                        </div>
                       </div>
                     </div>
                     
-                    {/* Meera in window */}
-                    <div className="absolute top-4 left-2 text-sm animate-bounce">
-                      👩🏻‍💼
+                    {/* Brick Building */}
+                    <div className="w-full h-full relative bg-orange-600 border-4 border-black">
+                      {/* Brick Pattern */}
+                      <div className="absolute inset-1 grid grid-cols-4 gap-px">
+                        {Array.from({length: 16}, (_, i) => (
+                          <div key={i} className="bg-orange-500 border border-orange-700"></div>
+                        ))}
+                      </div>
+                      
+                      {/* Striped Awning */}
+                      <div className="absolute -top-3 left-2 right-2 h-4 flex border-2 border-black">
+                        {Array.from({length: 8}, (_, i) => (
+                          <div key={i} className={`flex-1 ${i % 2 === 0 ? 'bg-red-500' : 'bg-white'}`}></div>
+                        ))}
+                      </div>
+                      
+                      {/* Windows */}
+                      <div className="absolute top-4 left-2 w-5 h-5 bg-blue-200 border-2 border-blue-800">
+                        <div className="absolute inset-1 bg-blue-100"></div>
+                      </div>
+                      
+                      {/* Large Glass Door/Window */}
+                      <div className="absolute top-4 right-2 bottom-8 w-12 bg-blue-200 border-2 border-blue-800">
+                        <div className="absolute inset-1 bg-gradient-to-br from-blue-100 to-blue-200">
+                          {/* Glass reflection effect */}
+                          <div className="absolute top-1 left-1 w-2 h-8 bg-white/50"></div>
+                          <div className="absolute top-1 right-1 w-1 h-6 bg-white/30"></div>
+                        </div>
+                        {/* Door handles */}
+                        <div className="absolute top-1/2 left-1 w-1 h-1 bg-gray-700 rounded-full"></div>
+                        <div className="absolute top-1/2 right-1 w-1 h-1 bg-gray-700 rounded-full"></div>
+                      </div>
+                      
+                      {/* Shop Display Window */}
+                      <div className="absolute bottom-8 left-2 w-5 h-6 bg-yellow-100 border-2 border-gray-800">
+                        <div className="absolute inset-1 bg-yellow-50 flex items-center justify-center">
+                          <div className="text-xs">📦</div>
+                        </div>
+                      </div>
+                      
+                      {/* Meera in window */}
+                      <div className="absolute top-6 left-3 text-lg animate-bounce">
+                        👩🏻‍💼
+                      </div>
                     </div>
-                  </div>
-                  
-                  {/* Shop Name Plate */}
-                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2">
-                    <Button 
-                      className="text-[10px] font-bold px-2 py-0.5 text-white border border-white/50"
-                      style={{ backgroundColor: shop.color }}
-                    >
-                      ENTER
-                    </Button>
+                    
+                    {/* Shop Name Plate */}
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
+                      <Button 
+                        className="text-xs font-bold px-3 py-1 text-white border-2 border-white/50"
+                        style={{ backgroundColor: shop.color }}
+                      >
+                        ENTER
+                      </Button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          {/* Bottom Row - 1 Shop Centered */}
+          <div className="flex justify-center">
+            {gameShopData.slice(2, 3).map((shop) => {
+              return (
+                <div 
+                  key={shop.id}
+                  className="cursor-pointer hover:scale-105 transition-transform duration-300"
+                  onClick={() => setSelectedShop(shop.id)}
+                >
+                  {/* Pixel Art Shop Building - Full size maintained */}
+                  <div className="w-32 h-40 relative">
+                    {/* Shop Sign */}
+                    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
+                      <div className="bg-white border-4 border-black px-3 py-1">
+                        <div className="text-red-600 font-bold text-xs text-center leading-tight">
+                          HOME DECOR
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Brick Building */}
+                    <div className="w-full h-full relative bg-orange-600 border-4 border-black">
+                      {/* Brick Pattern */}
+                      <div className="absolute inset-1 grid grid-cols-4 gap-px">
+                        {Array.from({length: 16}, (_, i) => (
+                          <div key={i} className="bg-orange-500 border border-orange-700"></div>
+                        ))}
+                      </div>
+                      
+                      {/* Striped Awning */}
+                      <div className="absolute -top-3 left-2 right-2 h-4 flex border-2 border-black">
+                        {Array.from({length: 8}, (_, i) => (
+                          <div key={i} className={`flex-1 ${i % 2 === 0 ? 'bg-red-500' : 'bg-white'}`}></div>
+                        ))}
+                      </div>
+                      
+                      {/* Windows */}
+                      <div className="absolute top-4 left-2 w-5 h-5 bg-blue-200 border-2 border-blue-800">
+                        <div className="absolute inset-1 bg-blue-100"></div>
+                      </div>
+                      
+                      {/* Large Glass Door/Window */}
+                      <div className="absolute top-4 right-2 bottom-8 w-12 bg-blue-200 border-2 border-blue-800">
+                        <div className="absolute inset-1 bg-gradient-to-br from-blue-100 to-blue-200">
+                          {/* Glass reflection effect */}
+                          <div className="absolute top-1 left-1 w-2 h-8 bg-white/50"></div>
+                          <div className="absolute top-1 right-1 w-1 h-6 bg-white/30"></div>
+                        </div>
+                        {/* Door handles */}
+                        <div className="absolute top-1/2 left-1 w-1 h-1 bg-gray-700 rounded-full"></div>
+                        <div className="absolute top-1/2 right-1 w-1 h-1 bg-gray-700 rounded-full"></div>
+                      </div>
+                      
+                      {/* Shop Display Window */}
+                      <div className="absolute bottom-8 left-2 w-5 h-6 bg-yellow-100 border-2 border-gray-800">
+                        <div className="absolute inset-1 bg-yellow-50 flex items-center justify-center">
+                          <div className="text-xs">📦</div>
+                        </div>
+                      </div>
+                      
+                      {/* Meera in window */}
+                      <div className="absolute top-6 left-3 text-lg animate-bounce">
+                        👩🏻‍💼
+                      </div>
+                    </div>
+                    
+                    {/* Shop Name Plate */}
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
+                      <Button 
+                        className="text-xs font-bold px-3 py-1 text-white border-2 border-white/50"
+                        style={{ backgroundColor: shop.color }}
+                      >
+                        ENTER
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 

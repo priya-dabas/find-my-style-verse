@@ -1,12 +1,24 @@
+export interface Product {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  description: string;
+  rating: number;
+  category: string;
+}
+
 export interface ShopSection {
   name: string;
-  items: string[];
+  products: Product[];
 }
 
 export interface Shopkeeper {
   name: string;
   personality: string;
   greeting: string;
+  avatar: string;
+  voiceId?: string;
 }
 
 export interface ShopData {
@@ -17,6 +29,7 @@ export interface ShopData {
   theme: 'western' | 'ethnic' | 'home';
   shopkeeper: Shopkeeper;
   sections: ShopSection[];
+  environment: '2d' | '3d';
 }
 
 export interface PlayerStats {
@@ -24,10 +37,11 @@ export interface PlayerStats {
   experience: number;
   level: number;
   achievements: string[];
+  inventory: Product[];
 }
 
 export interface GameEvent {
-  type: 'purchase' | 'discovery' | 'conversation';
+  type: 'purchase' | 'discovery' | 'conversation' | 'try-on';
   shop: string;
   item?: string;
   reward: {

@@ -303,8 +303,8 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
         <div className="relative h-[calc(100vh-5rem)] max-w-md mx-auto">
           {/* Four Corner Categories */}
           
-          {/* Top Left Category - Image-Focused Cards */}
-          <div className="absolute top-4 left-4 w-32 h-52">
+          {/* Top Left Category - Maximum Image Focus */}
+          <div className="absolute top-4 left-4 w-36 h-64">
             <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-2">
               <div className="text-center mb-2">
                 <h4 className="text-xs font-bold text-gray-800">
@@ -312,7 +312,7 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                 </h4>
               </div>
               
-              {/* 3 Products - Large Image Focus */}
+              {/* 3 Products - Maximum Image Size */}
               <div className="flex flex-col gap-2">
                 {shop.sections[0]?.products.slice(0, 3).map((product, idx) => (
                   <div 
@@ -320,13 +320,13 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                     className="relative bg-white rounded-lg border-2 border-blue-200 hover:border-blue-400 cursor-pointer transition-all hover:shadow-lg hover:scale-105 overflow-hidden"
                     onClick={() => setSelectedProduct(product)}
                   >
-                    {/* Large Product Image */}
-                    <div className="h-12 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                      <div className="text-2xl">{getProductEmoji(shop.sections[0]?.name || '')}</div>
+                    {/* Maximum Product Image Area */}
+                    <div className="h-16 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                      <div className="text-3xl">{getProductEmoji(shop.sections[0]?.name || '')}</div>
                     </div>
                     
-                    {/* Price Badge */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-blue-600 text-white text-center py-1">
+                    {/* Minimal Price Badge - Top Corner */}
+                    <div className="absolute top-1 left-1 bg-blue-600 text-white text-center px-2 py-0.5 rounded-full">
                       <span className="text-xs font-bold">₹{product.price}</span>
                     </div>
                     
@@ -348,8 +348,8 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
             </div>
           </div>
 
-          {/* Top Right Category - Image-Focused Cards */}
-          <div className="absolute top-4 right-4 w-32 h-52">
+          {/* Top Right Category - Maximum Image Focus */}
+          <div className="absolute top-4 right-4 w-36 h-64">
             <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-2">
               <div className="text-center mb-2">
                 <h4 className="text-xs font-bold text-gray-800">
@@ -357,7 +357,7 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                 </h4>
               </div>
               
-              {/* 3 Products - Large Image Focus */}
+              {/* 3 Products - Maximum Image Size */}
               <div className="flex flex-col gap-2">
                 {shop.sections[1]?.products.slice(0, 3).map((product, idx) => (
                   <div 
@@ -365,13 +365,13 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                     className="relative bg-white rounded-lg border-2 border-purple-200 hover:border-purple-400 cursor-pointer transition-all hover:shadow-lg hover:scale-105 overflow-hidden"
                     onClick={() => setSelectedProduct(product)}
                   >
-                    {/* Large Product Image */}
-                    <div className="h-12 bg-gradient-to-br from-purple-100 to-pink-200 flex items-center justify-center">
-                      <div className="text-2xl">{getProductEmoji(shop.sections[1]?.name || '')}</div>
+                    {/* Maximum Product Image Area */}
+                    <div className="h-16 bg-gradient-to-br from-purple-100 to-pink-200 flex items-center justify-center">
+                      <div className="text-3xl">{getProductEmoji(shop.sections[1]?.name || '')}</div>
                     </div>
                     
-                    {/* Price Badge */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-purple-600 text-white text-center py-1">
+                    {/* Minimal Price Badge - Top Corner */}
+                    <div className="absolute top-1 left-1 bg-purple-600 text-white text-center px-2 py-0.5 rounded-full">
                       <span className="text-xs font-bold">₹{product.price}</span>
                     </div>
                     
@@ -393,8 +393,8 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
             </div>
           </div>
 
-          {/* Bottom Left Category - Image-Focused Cards */}
-          <div className="absolute bottom-20 left-4 w-32 h-52">
+          {/* Bottom Left Category - Maximum Image Focus */}
+          <div className="absolute bottom-20 left-4 w-36 h-64">
             <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-2">
               <div className="text-center mb-2">
                 <h4 className="text-xs font-bold text-gray-800">
@@ -402,7 +402,7 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                 </h4>
               </div>
               
-              {/* 3 Products - Large Image Focus */}
+              {/* 3 Products - Maximum Image Size */}
               <div className="flex flex-col gap-2">
                 {shop.sections[2]?.products.slice(0, 3).map((product, idx) => (
                   <div 
@@ -410,13 +410,13 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                     className="relative bg-white rounded-lg border-2 border-green-200 hover:border-green-400 cursor-pointer transition-all hover:shadow-lg hover:scale-105 overflow-hidden"
                     onClick={() => setSelectedProduct(product)}
                   >
-                    {/* Large Product Image */}
-                    <div className="h-12 bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center">
-                      <div className="text-2xl">{getProductEmoji(shop.sections[2]?.name || '')}</div>
+                    {/* Maximum Product Image Area */}
+                    <div className="h-16 bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center">
+                      <div className="text-3xl">{getProductEmoji(shop.sections[2]?.name || '')}</div>
                     </div>
                     
-                    {/* Price Badge */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-green-600 text-white text-center py-1">
+                    {/* Minimal Price Badge - Top Corner */}
+                    <div className="absolute top-1 left-1 bg-green-600 text-white text-center px-2 py-0.5 rounded-full">
                       <span className="text-xs font-bold">₹{product.price}</span>
                     </div>
                     
@@ -438,8 +438,8 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
             </div>
           </div>
 
-          {/* Bottom Right Category - Image-Focused Cards */}
-          <div className="absolute bottom-20 right-4 w-32 h-52">
+          {/* Bottom Right Category - Maximum Image Focus */}
+          <div className="absolute bottom-20 right-4 w-36 h-64">
             <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-2">
               <div className="text-center mb-2">
                 <h4 className="text-xs font-bold text-gray-800">
@@ -447,7 +447,7 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                 </h4>
               </div>
               
-              {/* 3 Products - Large Image Focus */}
+              {/* 3 Products - Maximum Image Size */}
               <div className="flex flex-col gap-2">
                 {shop.sections[3]?.products.slice(0, 3).map((product, idx) => (
                   <div 
@@ -455,13 +455,13 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                     className="relative bg-white rounded-lg border-2 border-orange-200 hover:border-orange-400 cursor-pointer transition-all hover:shadow-lg hover:scale-105 overflow-hidden"
                     onClick={() => setSelectedProduct(product)}
                   >
-                    {/* Large Product Image */}
-                    <div className="h-12 bg-gradient-to-br from-orange-100 to-amber-200 flex items-center justify-center">
-                      <div className="text-2xl">{getProductEmoji(shop.sections[3]?.name || '')}</div>
+                    {/* Maximum Product Image Area */}
+                    <div className="h-16 bg-gradient-to-br from-orange-100 to-amber-200 flex items-center justify-center">
+                      <div className="text-3xl">{getProductEmoji(shop.sections[3]?.name || '')}</div>
                     </div>
                     
-                    {/* Price Badge */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-orange-600 text-white text-center py-1">
+                    {/* Minimal Price Badge - Top Corner */}
+                    <div className="absolute top-1 left-1 bg-orange-600 text-white text-center px-2 py-0.5 rounded-full">
                       <span className="text-xs font-bold">₹{product.price}</span>
                     </div>
                     

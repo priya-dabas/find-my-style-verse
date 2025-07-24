@@ -93,34 +93,12 @@ export const GameifiedMall = () => {
   }
 
   return (
-    <div className="min-h-screen bg-green-400 flex flex-col relative overflow-hidden">
+    <div className="min-h-screen bg-gray-400 flex flex-col relative overflow-hidden">
       {/* Sky Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-blue-300 to-blue-400"></div>
       
-      {/* Marketplace Ground Pattern */}
-      <div className="absolute inset-0">
-        {/* Green grass base */}
-        <div className="absolute inset-0 bg-green-400"></div>
-        
-        {/* Stone pavement areas */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gray-400">
-          {/* Stone tile pattern */}
-          <div className="absolute inset-0 grid grid-cols-8 gap-px opacity-30">
-            {Array.from({length: 32}, (_, i) => (
-              <div key={i} className="bg-gray-500 border border-gray-600"></div>
-            ))}
-          </div>
-        </div>
-        
-        {/* Stone pathways */}
-        <div className="absolute bottom-32 left-0 right-0 h-24 bg-gray-500 opacity-40">
-          <div className="absolute inset-0 grid grid-cols-12 gap-px">
-            {Array.from({length: 36}, (_, i) => (
-              <div key={i} className="bg-gray-400 border border-gray-600"></div>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* Ground */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gray-600"></div>
       
       {/* Decorative Trees */}
       <div className="absolute inset-0 pointer-events-none">

@@ -93,170 +93,129 @@ export const GameifiedMall = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-400 via-blue-500 to-purple-600 relative overflow-hidden">
-      {/* Pixel Art Mall Environment */}
-      <div className="absolute inset-0">
-        {/* Sky */}
-        <div className="absolute top-0 w-full h-1/3 bg-gradient-to-b from-blue-300 to-blue-400"></div>
-        
-        {/* Ground */}
-        <div className="absolute bottom-0 w-full h-2/3 bg-gradient-to-t from-gray-600 to-gray-500"></div>
-        
-        {/* Street */}
-        <div className="absolute bottom-0 w-full h-32 bg-gray-800">
-          {/* Crosswalk stripes */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
-            {Array.from({length: 20}, (_, i) => (
-              <div key={i} className="w-8 h-4 bg-white"></div>
-            ))}
-          </div>
-        </div>
-        
-        {/* Trees */}
-        <div className="absolute bottom-32 left-8 w-16 h-16 bg-green-500 rounded-full"></div>
-        <div className="absolute bottom-36 left-12 w-4 h-8 bg-amber-800"></div>
-        
-        <div className="absolute bottom-32 right-8 w-16 h-16 bg-green-500 rounded-full"></div>
-        <div className="absolute bottom-36 right-12 w-4 h-8 bg-amber-800"></div>
-        
-        <div className="absolute bottom-32 left-32 w-12 h-12 bg-green-600 rounded-full"></div>
-        <div className="absolute bottom-36 left-36 w-3 h-6 bg-amber-900"></div>
-        
-        <div className="absolute bottom-32 right-32 w-12 h-12 bg-green-600 rounded-full"></div>
-        <div className="absolute bottom-36 right-36 w-3 h-6 bg-amber-900"></div>
+    <div className="min-h-screen bg-gray-400 p-4 overflow-x-auto">
+      {/* Sky Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-300 to-blue-400"></div>
+      
+      {/* Ground */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gray-600"></div>
+      
+      {/* Mobile Header */}
+      <div className="relative z-10 text-center mb-6">
+        <h1 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
+          🏬 SHOPPING STREET
+        </h1>
+        <p className="text-white text-sm drop-shadow">
+          Choose Your Shop
+        </p>
       </div>
 
-      {/* Mobile-Responsive Game UI */}
-      <div className="relative z-10 p-4 sm:p-8">
-        {/* Mobile-Optimized Header Stats */}
-        <div className="text-center mb-4 sm:mb-8">
-          <h1 className="text-2xl sm:text-5xl font-bold text-white mb-2 sm:mb-4 drop-shadow-2xl pixel-font">
-            🎮 SHOPPING MALL GAME 🛍️
-          </h1>
-          <div className="flex justify-center items-center gap-2 sm:gap-6 flex-wrap">
-            <Badge className="text-xs sm:text-lg px-3 sm:px-6 py-2 sm:py-3 bg-yellow-500 text-black font-bold border-2 border-yellow-600">
-              💰 COINS: {playerStats.coins}
-            </Badge>
-            <Badge className="text-xs sm:text-lg px-3 sm:px-6 py-2 sm:py-3 bg-blue-500 text-white font-bold border-2 border-blue-600">
-              ⭐ LEVEL: {playerStats.level}
-            </Badge>
-            <Badge className="text-xs sm:text-lg px-3 sm:px-6 py-2 sm:py-3 bg-green-500 text-white font-bold border-2 border-green-600">
-              🎯 EXP: {playerStats.experience}
-            </Badge>
-            <Badge className="text-lg px-6 py-3 bg-purple-500 text-white font-bold border-2 border-purple-600">
-              🛒 ITEMS: {playerStats.inventory.length}
-            </Badge>
+      {/* Player Stats - Mobile Optimized */}
+      <div className="relative z-10 flex justify-center mb-6">
+        <div className="bg-black/80 text-white px-4 py-2 rounded-lg border-2 border-yellow-400">
+          <div className="flex items-center space-x-4 text-sm">
+            <div className="flex items-center space-x-1">
+              <span>🪙</span>
+              <span className="text-yellow-400 font-bold">{playerStats.coins}</span>
+            </div>
+            <div className="flex items-center space-x-1">
+              <span>⭐</span>
+              <span className="text-blue-400 font-bold">Lv.{playerStats.level}</span>
+            </div>
+            <div className="flex items-center space-x-1">
+              <span>🎯</span>
+              <span className="text-green-400 font-bold">{playerStats.experience}</span>
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Shop Buildings - Pixel Art Style */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {gameShopData.map((shop, index) => (
-            <div key={shop.id} className="relative">
-              <Card 
-                className="group hover:scale-105 transition-all duration-300 cursor-pointer border-4 bg-gradient-to-b from-white to-gray-100 shadow-2xl"
-                style={{ borderColor: shop.color }}
-                onClick={() => setSelectedShop(shop.id)}
-              >
-                <CardHeader className="text-center pb-2">
-                  {/* Pixel Art Shop Building */}
-                  <div 
-                    className="w-full h-48 rounded-lg mb-4 relative overflow-hidden border-4 group-hover:shadow-xl transition-shadow duration-300"
-                    style={{ 
-                      backgroundColor: shop.color,
-                      background: `linear-gradient(135deg, ${shop.color}ff, ${shop.color}cc)`,
-                      borderColor: shop.color
-                    }}
-                  >
-                    {/* Shop Front */}
-                    <div className="absolute bottom-0 w-full h-3/4 bg-gradient-to-b from-orange-200 to-orange-300"></div>
-                    
-                    {/* Roof */}
-                    <div className="absolute top-0 w-full h-1/4 bg-gradient-to-b from-red-800 to-red-700"></div>
-                    
-                    {/* Shop Sign */}
-                    <div className="absolute top-8 left-1/2 transform -translate-x-1/2 bg-black text-white px-3 py-1 rounded text-xs font-bold">
-                      SHOP {index + 1}
-                    </div>
-                    
-                    {/* Windows */}
-                    <div className="absolute top-16 left-4 w-8 h-8 bg-blue-300 border-2 border-blue-800"></div>
-                    <div className="absolute top-16 right-4 w-8 h-8 bg-blue-300 border-2 border-blue-800"></div>
-                    
-                    {/* Door */}
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-12 h-16 bg-amber-800 border-2 border-amber-900 rounded-t-lg"></div>
-                    <div className="absolute bottom-8 left-1/2 transform -translate-x-2 w-2 h-2 bg-yellow-400 rounded-full"></div>
-                    
-                    {/* Awning */}
-                    <div 
-                      className="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-20 h-4 rounded-b-lg border-2"
-                      style={{ backgroundColor: shop.color, borderColor: shop.color }}
-                    ></div>
-                    
-                    {/* Red and white stripes on awning */}
-                    <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-20 h-4 rounded-b-lg overflow-hidden">
-                      <div className="flex h-full">
-                        {Array.from({length: 8}, (_, i) => (
-                          <div key={i} className={`flex-1 ${i % 2 === 0 ? 'bg-red-600' : 'bg-white'}`}></div>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    {/* Meera in window */}
-                    <div className="absolute top-18 left-1/2 transform -translate-x-1/2 text-2xl animate-bounce">
-                      👩🏻‍💼
+      {/* Horizontal Pixel-Art Shops */}
+      <div className="relative z-10 flex gap-4 justify-center items-end pb-20 min-w-max px-4">
+        {gameShopData.map((shop, index) => {
+          const shopNames = ['WESTERN', 'ETHNIC', 'HOME DECOR'];
+          return (
+            <div 
+              key={shop.id}
+              className="cursor-pointer hover:scale-105 transition-transform duration-300"
+              onClick={() => setSelectedShop(shop.id)}
+            >
+              {/* Pixel Art Shop Building */}
+              <div className="w-32 h-40 relative">
+                {/* Shop Sign */}
+                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
+                  <div className="bg-white border-4 border-black px-3 py-1">
+                    <div className="text-red-600 font-bold text-xs text-center leading-tight">
+                      {shopNames[index]}
                     </div>
                   </div>
-                  
-                  <CardTitle className="text-2xl font-bold pixel-font" style={{ color: shop.color }}>
-                    {shop.name.toUpperCase()}
-                  </CardTitle>
-                  <p className="text-gray-600 text-sm">Meet Meera • AI Voice Assistant</p>
-                </CardHeader>
+                </div>
                 
-                <CardContent className="pt-0">
-                  <div className="space-y-2 mb-4">
-                    {shop.sections.map((section) => (
-                      <div key={section.name} className="flex justify-between items-center text-sm">
-                        <span className="font-medium">{section.name}</span>
-                        <Badge variant="outline" className="text-xs">
-                          {section.products.length} items
-                        </Badge>
-                      </div>
+                {/* Brick Building */}
+                <div className="w-full h-full relative bg-orange-600 border-4 border-black">
+                  {/* Brick Pattern */}
+                  <div className="absolute inset-1 grid grid-cols-4 gap-px">
+                    {Array.from({length: 16}, (_, i) => (
+                      <div key={i} className="bg-orange-500 border border-orange-700"></div>
                     ))}
                   </div>
                   
+                  {/* Striped Awning */}
+                  <div className="absolute -top-3 left-2 right-2 h-4 flex border-2 border-black">
+                    {Array.from({length: 8}, (_, i) => (
+                      <div key={i} className={`flex-1 ${i % 2 === 0 ? 'bg-red-500' : 'bg-white'}`}></div>
+                    ))}
+                  </div>
+                  
+                  {/* Windows */}
+                  <div className="absolute top-4 left-2 w-5 h-5 bg-blue-200 border-2 border-blue-800">
+                    <div className="absolute inset-1 bg-blue-100"></div>
+                  </div>
+                  
+                  {/* Large Glass Door/Window */}
+                  <div className="absolute top-4 right-2 bottom-8 w-12 bg-blue-200 border-2 border-blue-800">
+                    <div className="absolute inset-1 bg-gradient-to-br from-blue-100 to-blue-200">
+                      {/* Glass reflection effect */}
+                      <div className="absolute top-1 left-1 w-2 h-8 bg-white/50"></div>
+                      <div className="absolute top-1 right-1 w-1 h-6 bg-white/30"></div>
+                    </div>
+                    {/* Door handles */}
+                    <div className="absolute top-1/2 left-1 w-1 h-1 bg-gray-700 rounded-full"></div>
+                    <div className="absolute top-1/2 right-1 w-1 h-1 bg-gray-700 rounded-full"></div>
+                  </div>
+                  
+                  {/* Shop Display Window */}
+                  <div className="absolute bottom-8 left-2 w-5 h-6 bg-yellow-100 border-2 border-gray-800">
+                    <div className="absolute inset-1 bg-yellow-50 flex items-center justify-center">
+                      <div className="text-xs">📦</div>
+                    </div>
+                  </div>
+                  
+                  {/* Meera in window */}
+                  <div className="absolute top-6 left-3 text-lg animate-bounce">
+                    👩🏻‍💼
+                  </div>
+                </div>
+                
+                {/* Shop Name Plate */}
+                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
                   <Button 
-                    className="w-full text-white font-bold py-3 text-lg pixel-font transform group-hover:scale-105 transition-transform duration-200"
+                    className="text-xs font-bold px-3 py-1 text-white border-2 border-white/50"
                     style={{ backgroundColor: shop.color }}
                   >
-                    🚪 ENTER SHOP {index + 1}
+                    ENTER
                   </Button>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
+          );
+        })}
+      </div>
 
-        {/* Game Instructions */}
-        <div className="mt-12 text-center">
-          <div className="bg-black/80 text-white p-6 rounded-lg max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4 pixel-font">🎮 HOW TO PLAY</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-              <div>
-                <div className="text-2xl mb-2">🛍️</div>
-                <p><strong>EXPLORE SHOPS:</strong> Click on each building to enter the 2D shop room</p>
-              </div>
-              <div>
-                <div className="text-2xl mb-2">🎤</div>
-                <p><strong>TALK TO MEERA:</strong> Use voice commands to ask about products</p>
-              </div>
-              <div>
-                <div className="text-2xl mb-2">❓</div>
-                <p><strong>TRY BEFORE BUY:</strong> Click question marks for virtual try-on</p>
-              </div>
-            </div>
-          </div>
+      {/* Instructions */}
+      <div className="relative z-10 text-center mt-8">
+        <div className="bg-black/80 text-white p-3 rounded-lg mx-auto max-w-sm">
+          <p className="text-xs">👆 Tap any shop to enter and meet Meera!</p>
         </div>
       </div>
     </div>

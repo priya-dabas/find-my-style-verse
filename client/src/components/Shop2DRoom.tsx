@@ -185,6 +185,22 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
     ));
   };
 
+  const getProductEmoji = (categoryName: string) => {
+    if (categoryName.includes('T-shirt')) return '👕';
+    if (categoryName.includes('Jeans')) return '👖';
+    if (categoryName.includes('Cap')) return '🧢';
+    if (categoryName.includes('Shoe')) return '👟';
+    if (categoryName.includes('Saree')) return '🥻';
+    if (categoryName.includes('Kurti')) return '👗';
+    if (categoryName.includes('Sherwani')) return '🤵';
+    if (categoryName.includes('Jooti')) return '👞';
+    if (categoryName.includes('Lamp')) return '💡';
+    if (categoryName.includes('Paint')) return '🖼️';
+    if (categoryName.includes('Plant')) return '🪴';
+    if (categoryName.includes('Rug')) return '🏠';
+    return '🛍️'; // Default emoji
+  };
+
   const CleanProductRack = ({ products, categoryName, rackNumber }: { products: Product[], categoryName: string, rackNumber: number }) => (
     <div className="bg-white rounded-lg shadow-lg border-2 border-gray-200 overflow-hidden">
       {/* Rack Header */}
@@ -283,54 +299,146 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
           </div>
         </div>
 
-        {/* Clean Meera Assistant */}
-        <div className="text-center mb-6 sm:mb-8">
-          <div className="inline-flex items-center bg-white rounded-full shadow-lg p-2 sm:p-3 border-2 border-pink-200">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-pink-100 to-pink-200 rounded-full flex items-center justify-center mr-3 sm:mr-4">
-              <div className="text-xl sm:text-2xl">👩🏻‍💼</div>
-            </div>
-            <div className="text-left">
-              <h3 className="text-sm sm:text-base font-bold text-gray-800">Meera - AI Assistant</h3>
-              <p className="text-xs sm:text-sm text-gray-600 max-w-48 sm:max-w-64">{meeraMessage}</p>
-            </div>
-          </div>
+        {/* Mobile Wireframe Layout - 4 Corners + Center */}
+        <div className="relative h-[calc(100vh-5rem)] max-w-md mx-auto">
+          {/* Four Corner Categories */}
           
-          {/* Voice Controls */}
-          <div className="flex justify-center gap-2 mt-3">
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={() => setIsVoiceEnabled(!isVoiceEnabled)}
-              className={`${isVoiceEnabled ? 'bg-green-50 border-green-300 text-green-700' : 'bg-gray-50'} px-3 py-2`}
-            >
-              {isVoiceEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
-            </Button>
-            
-            <Button
-              size="sm"
-              variant={isListening ? "default" : "outline"}
-              onClick={isListening ? stopListening : startListening}
-              className={`${isListening ? 'bg-red-500 hover:bg-red-600 text-white' : 'bg-blue-50 border-blue-300 text-blue-700'} px-3 py-2`}
-            >
-              {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
-              <span className="ml-2 text-xs hidden sm:inline">
-                {isListening ? "Stop" : "Talk"}
-              </span>
-            </Button>
+          {/* Top Left Category */}
+          <div className="absolute top-4 left-4 w-24 h-24 sm:w-28 sm:h-28">
+            <Card className="h-full bg-white shadow-lg border-2" style={{ borderColor: shop.color }}>
+              <CardContent className="p-2 h-full flex flex-col items-center justify-center">
+                <div className="text-lg mb-1">
+                  {shop.sections[0] && getProductEmoji(shop.sections[0].name)}
+                </div>
+                <p className="text-xs font-bold text-center leading-tight">
+                  {shop.sections[0]?.name || 'Category 1'}
+                </p>
+                <div className="grid grid-cols-5 gap-0.5 mt-1">
+                  {shop.sections[0]?.products.slice(0, 5).map((product, idx) => (
+                    <div 
+                      key={idx}
+                      className="w-2 h-2 bg-gray-300 rounded-full cursor-pointer hover:bg-blue-400 transition-colors"
+                      onClick={() => setSelectedProduct(product)}
+                    />
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
-        </div>
 
-        {/* Clean Product Racks Grid */}
-        <div className="px-4 sm:px-8 pb-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-6xl mx-auto">
-            {shop.sections.slice(0, 4).map((section, index) => (
-              <CleanProductRack
-                key={section.name}
-                products={section.products}
-                categoryName={section.name}
-                rackNumber={index + 1}
-              />
-            ))}
+          {/* Top Right Category */}
+          <div className="absolute top-4 right-4 w-24 h-24 sm:w-28 sm:h-28">
+            <Card className="h-full bg-white shadow-lg border-2" style={{ borderColor: shop.color }}>
+              <CardContent className="p-2 h-full flex flex-col items-center justify-center">
+                <div className="text-lg mb-1">
+                  {shop.sections[1] && getProductEmoji(shop.sections[1].name)}
+                </div>
+                <p className="text-xs font-bold text-center leading-tight">
+                  {shop.sections[1]?.name || 'Category 2'}
+                </p>
+                <div className="grid grid-cols-5 gap-0.5 mt-1">
+                  {shop.sections[1]?.products.slice(0, 5).map((product, idx) => (
+                    <div 
+                      key={idx}
+                      className="w-2 h-2 bg-gray-300 rounded-full cursor-pointer hover:bg-blue-400 transition-colors"
+                      onClick={() => setSelectedProduct(product)}
+                    />
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Bottom Left Category */}
+          <div className="absolute bottom-20 left-4 w-24 h-24 sm:w-28 sm:h-28">
+            <Card className="h-full bg-white shadow-lg border-2" style={{ borderColor: shop.color }}>
+              <CardContent className="p-2 h-full flex flex-col items-center justify-center">
+                <div className="text-lg mb-1">
+                  {shop.sections[2] && getProductEmoji(shop.sections[2].name)}
+                </div>
+                <p className="text-xs font-bold text-center leading-tight">
+                  {shop.sections[2]?.name || 'Category 3'}
+                </p>
+                <div className="grid grid-cols-5 gap-0.5 mt-1">
+                  {shop.sections[2]?.products.slice(0, 5).map((product, idx) => (
+                    <div 
+                      key={idx}
+                      className="w-2 h-2 bg-gray-300 rounded-full cursor-pointer hover:bg-blue-400 transition-colors"
+                      onClick={() => setSelectedProduct(product)}
+                    />
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Bottom Right Category */}
+          <div className="absolute bottom-20 right-4 w-24 h-24 sm:w-28 sm:h-28">
+            <Card className="h-full bg-white shadow-lg border-2" style={{ borderColor: shop.color }}>
+              <CardContent className="p-2 h-full flex flex-col items-center justify-center">
+                <div className="text-lg mb-1">
+                  {shop.sections[3] && getProductEmoji(shop.sections[3].name)}
+                </div>
+                <p className="text-xs font-bold text-center leading-tight">
+                  {shop.sections[3]?.name || 'Category 4'}
+                </p>
+                <div className="grid grid-cols-5 gap-0.5 mt-1">
+                  {shop.sections[3]?.products.slice(0, 5).map((product, idx) => (
+                    <div 
+                      key={idx}
+                      className="w-2 h-2 bg-gray-300 rounded-full cursor-pointer hover:bg-blue-400 transition-colors"
+                      onClick={() => setSelectedProduct(product)}
+                    />
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Central Meera Avatar - Exactly like wireframe */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="relative">
+              {/* Meera Card */}
+              <Card className="bg-white shadow-xl border-4 border-pink-300">
+                <CardContent className="p-4 text-center">
+                  <div className="w-20 h-20 bg-gradient-to-br from-pink-100 to-pink-200 rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-pink-300">
+                    <div className="text-3xl">👩🏻‍💼</div>
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-800 mb-2">Meera</h3>
+                  <p className="text-xs text-gray-600 mb-3 leading-tight max-w-32">
+                    {meeraMessage}
+                  </p>
+                  
+                  {/* Voice Controls - Compact */}
+                  <div className="flex justify-center gap-1">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => setIsVoiceEnabled(!isVoiceEnabled)}
+                      className={`w-8 h-8 p-0 ${isVoiceEnabled ? 'bg-green-50 border-green-300 text-green-700' : 'bg-gray-50'}`}
+                    >
+                      {isVoiceEnabled ? <Volume2 className="w-3 h-3" /> : <VolumeX className="w-3 h-3" />}
+                    </Button>
+                    
+                    <Button
+                      size="sm"
+                      variant={isListening ? "default" : "outline"}
+                      onClick={isListening ? stopListening : startListening}
+                      className={`w-8 h-8 p-0 ${isListening ? 'bg-red-500 hover:bg-red-600 text-white' : 'bg-blue-50 border-blue-300 text-blue-700'}`}
+                    >
+                      {isListening ? <MicOff className="w-3 h-3" /> : <Mic className="w-3 h-3" />}
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              {/* Speech bubble indicator when listening */}
+              {isListening && (
+                <div className="absolute -top-4 -right-4 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
+                  <div className="w-2 h-2 bg-white rounded-full"></div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 

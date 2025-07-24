@@ -35,6 +35,8 @@ A 3D shopping experience with AI shopkeepers built using React Three.js, featuri
 - Wants 3D room environments for each shop
 - Needs virtual try-on functionality for clothing items
 - Wants 5 specific products per category with detailed display
+- AI assistant should have Indian female voice and speak within the room (not redirect to new page)
+- Virtual try-on should prompt for image upload and generate new images with AI saying "Wow, this looks so good on you"
 
 ## Dependencies
 - Three.js ecosystem (@react-three/fiber, @react-three/drei) - for future 3D features
@@ -42,3 +44,4 @@ A 3D shopping experience with AI shopkeepers built using React Three.js, featuri
 - Speech Recognition API for voice interactions
 - Web Speech API for text-to-speech responses
 - Pixel-art styling with custom CSS for game UI
+- OpenAI package installed for AI functionality and image generation

@@ -187,18 +187,18 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
 
   const ProductShelf = ({ products, categoryName, position }: { products: Product[], categoryName: string, position: string }) => (
     <div className={`absolute ${position}`}>
-      <div className="bg-amber-900 p-2 rounded-t-lg border-2 border-amber-800">
-        <h3 className="text-white font-bold text-sm text-center">{categoryName}</h3>
+      <div className="bg-amber-900 p-1 sm:p-2 rounded-t-lg border-2 border-amber-800">
+        <h3 className="text-white font-bold text-xs sm:text-sm text-center">{categoryName}</h3>
       </div>
-      <div className="bg-amber-700 p-3 rounded-b-lg border-2 border-amber-800 border-t-0">
-        <div className="grid grid-cols-5 gap-2">
+      <div className="bg-amber-700 p-2 sm:p-3 rounded-b-lg border-2 border-amber-800 border-t-0">
+        <div className="grid grid-cols-5 gap-1 sm:gap-2">
           {products.map((product) => (
             <div
               key={product.id}
               className="relative group cursor-pointer"
               onClick={() => setSelectedProduct(product)}
             >
-              <div className="w-16 h-16 bg-white rounded border-2 border-gray-300 flex items-center justify-center text-2xl hover:border-yellow-400 transition-all duration-200 group-hover:scale-110">
+              <div className="w-10 h-10 sm:w-16 sm:h-16 bg-white rounded border-2 border-gray-300 flex items-center justify-center text-lg sm:text-2xl hover:border-yellow-400 transition-all duration-200 group-hover:scale-110">
                 {categoryName.includes('T-shirt') && '👕'}
                 {categoryName.includes('Jeans') && '👖'}
                 {categoryName.includes('Cap') && '🧢'}
@@ -213,21 +213,21 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                 {categoryName.includes('Rug') && '🏠'}
               </div>
               
-              {/* Try-On Button */}
+              {/* Mobile-Optimized Try-On Button */}
               <Button
                 size="sm"
                 variant="outline"
-                className="absolute -top-1 -right-1 w-6 h-6 p-0 bg-white border-2 border-yellow-400 hover:bg-yellow-100"
+                className="absolute -top-1 -right-1 w-4 h-4 sm:w-6 sm:h-6 p-0 bg-white border-2 border-yellow-400 hover:bg-yellow-100 text-xs"
                 onClick={(e) => {
                   e.stopPropagation();
                   handleTryOn(product);
                 }}
               >
-                <HelpCircle className="w-3 h-3 text-yellow-600" />
+                <HelpCircle className="w-2 h-2 sm:w-3 sm:h-3 text-yellow-600" />
               </Button>
               
-              {/* Price Tag */}
-              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
+              {/* Mobile-Responsive Price Tag */}
+              <div className="absolute -bottom-1 sm:-bottom-2 left-1/2 transform -translate-x-1/2">
                 <Badge className="text-xs px-1 py-0 bg-green-600 text-white">
                   ₹{product.price}
                 </Badge>
@@ -241,64 +241,68 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-100 to-orange-200 relative overflow-hidden">
-      {/* Header */}
-      <div className="absolute top-4 left-4 right-4 z-20">
+      {/* Mobile-Optimized Header */}
+      <div className="absolute top-2 left-2 right-2 z-20">
         <div className="flex items-center justify-between">
-          <Button variant="outline" onClick={onBack} className="bg-white/90">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Mall
+          <Button variant="outline" onClick={onBack} className="bg-white/90 text-xs px-2 py-1 h-8">
+            <ArrowLeft className="w-3 h-3 mr-1" />
+            <span className="hidden sm:inline">Back to Mall</span>
+            <span className="sm:hidden">Back</span>
           </Button>
           
-          <div className="bg-black/80 text-white px-4 py-2 rounded-lg">
-            <h1 className="text-xl font-bold">SHOP - {shop.id === 'western' ? '1' : shop.id === 'ethnic' ? '2' : '3'} ({shop.name.toUpperCase()})</h1>
+          <div className="bg-black/80 text-white px-2 py-1 rounded-lg text-center">
+            <h1 className="text-sm sm:text-xl font-bold">
+              <span className="hidden sm:inline">SHOP - {shop.id === 'western' ? '1' : shop.id === 'ethnic' ? '2' : '3'} ({shop.name.toUpperCase()})</span>
+              <span className="sm:hidden">{shop.name.toUpperCase()}</span>
+            </h1>
           </div>
           
-          <div className="flex gap-2">
-            <Badge className="bg-yellow-500 text-black">💰 {playerStats.coins}</Badge>
-            <Badge className="bg-blue-500">⭐ Level {playerStats.level}</Badge>
+          <div className="flex gap-1">
+            <Badge className="bg-yellow-500 text-black text-xs px-1 py-0">💰 {playerStats.coins}</Badge>
+            <Badge className="bg-blue-500 text-xs px-1 py-0">⭐ {playerStats.level}</Badge>
           </div>
         </div>
       </div>
 
-      {/* 2D Room Layout */}
-      <div className="relative w-full h-screen pt-20">
+      {/* Mobile-Optimized 2D Room Layout */}
+      <div className="relative w-full h-screen pt-12 sm:pt-20">
         {/* Floor */}
         <div className="absolute bottom-0 w-full h-1/3 bg-gradient-to-t from-amber-800 to-amber-600 border-t-4 border-amber-900"></div>
         
         {/* Back Wall */}
-        <div className="absolute top-20 w-full h-2/3 bg-gradient-to-b from-orange-300 to-orange-400"></div>
+        <div className="absolute top-12 sm:top-20 w-full h-2/3 bg-gradient-to-b from-orange-300 to-orange-400"></div>
         
-        {/* Shop Sign */}
-        <div className="absolute top-24 left-1/2 transform -translate-x-1/2 bg-black text-white px-8 py-2 rounded-lg border-4 border-yellow-400">
-          <h2 className="text-2xl font-bold">{shop.name.toUpperCase()}</h2>
+        {/* Mobile-Responsive Shop Sign */}
+        <div className="absolute top-16 sm:top-24 left-1/2 transform -translate-x-1/2 bg-black text-white px-3 sm:px-8 py-1 sm:py-2 rounded-lg border-2 sm:border-4 border-yellow-400">
+          <h2 className="text-lg sm:text-2xl font-bold">{shop.name.toUpperCase()}</h2>
         </div>
 
-        {/* Meera - AI Assistant in Center */}
-        <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-10">
+        {/* Mobile-Optimized Meera - AI Assistant in Center */}
+        <div className="absolute bottom-24 sm:bottom-32 left-1/2 transform -translate-x-1/2 z-10">
           <div className="relative">
-            {/* Meera Avatar */}
+            {/* Mobile-Responsive Meera Avatar */}
             <div 
-              className="w-24 h-32 bg-gradient-to-b from-pink-200 to-pink-300 rounded-full border-4 border-white shadow-2xl cursor-pointer hover:scale-110 transition-transform duration-300 flex flex-col items-center justify-center"
+              className="w-16 h-20 sm:w-24 sm:h-32 bg-gradient-to-b from-pink-200 to-pink-300 rounded-full border-2 sm:border-4 border-white shadow-2xl cursor-pointer hover:scale-110 transition-transform duration-300 flex flex-col items-center justify-center"
             >
-              <div className="text-4xl mb-1">👩🏻‍💼</div>
+              <div className="text-2xl sm:text-4xl mb-1">👩🏻‍💼</div>
               <div className="text-xs font-bold text-gray-700">MEERA</div>
             </div>
             
-            {/* Speech Bubble */}
-            <div className="absolute -top-20 left-1/2 transform -translate-x-1/2 bg-white rounded-lg p-3 border-2 border-gray-300 shadow-lg min-w-48 max-w-64">
-              <p className="text-sm font-medium text-center">{meeraMessage}</p>
+            {/* Mobile-Responsive Speech Bubble */}
+            <div className="absolute -top-16 sm:-top-20 left-1/2 transform -translate-x-1/2 bg-white rounded-lg p-2 sm:p-3 border-2 border-gray-300 shadow-lg min-w-32 max-w-48 sm:min-w-48 sm:max-w-64">
+              <p className="text-xs sm:text-sm font-medium text-center line-clamp-3">{meeraMessage}</p>
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
                 <div className="w-0 h-0 border-l-4 border-r-4 border-t-8 border-transparent border-t-white"></div>
               </div>
             </div>
 
-            {/* Voice Controls */}
-            <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex gap-1">
+            {/* Mobile-Optimized Voice Controls */}
+            <div className="absolute -bottom-6 sm:-bottom-8 left-1/2 transform -translate-x-1/2 flex gap-1">
               <Button
                 size="sm"
                 variant="outline"
                 onClick={() => setIsVoiceEnabled(!isVoiceEnabled)}
-                className={`${isVoiceEnabled ? 'bg-green-100 border-green-400' : 'bg-gray-100'} p-1`}
+                className={`${isVoiceEnabled ? 'bg-green-100 border-green-400' : 'bg-gray-100'} p-1 w-8 h-8 sm:w-auto sm:h-auto`}
               >
                 {isVoiceEnabled ? <Volume2 className="w-3 h-3" /> : <VolumeX className="w-3 h-3" />}
               </Button>
@@ -307,50 +311,50 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                 size="sm"
                 variant={isListening ? "default" : "outline"}
                 onClick={isListening ? stopListening : startListening}
-                className={`${isListening ? 'bg-red-500 hover:bg-red-600 text-white' : 'bg-blue-100 border-blue-400'} p-1`}
+                className={`${isListening ? 'bg-red-500 hover:bg-red-600 text-white' : 'bg-blue-100 border-blue-400'} p-1 w-8 h-8 sm:w-auto sm:h-auto`}
               >
                 {isListening ? <MicOff className="w-3 h-3" /> : <Mic className="w-3 h-3" />}
               </Button>
             </div>
             
-            {/* Voice Instructions */}
-            <div className="absolute -bottom-14 left-1/2 transform -translate-x-1/2 text-center">
-              <p className="text-xs text-gray-600 whitespace-nowrap">
-                {isListening ? "🎤 Listening..." : "Click mic to talk"}
+            {/* Mobile-Responsive Voice Instructions */}
+            <div className="absolute -bottom-10 sm:-bottom-14 left-1/2 transform -translate-x-1/2 text-center">
+              <p className="text-xs text-gray-600">
+                {isListening ? "🎤 Listening..." : "Tap mic"}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Product Shelves Layout */}
+        {/* Mobile-Responsive Product Shelves Layout */}
         {shop.sections.length >= 4 && (
           <>
             {/* Top Left Shelf */}
             <ProductShelf 
               products={shop.sections[0].products} 
               categoryName={shop.sections[0].name}
-              position="top-32 left-8"
+              position="top-24 sm:top-32 left-1 sm:left-8"
             />
             
             {/* Top Right Shelf */}
             <ProductShelf 
               products={shop.sections[1].products} 
               categoryName={shop.sections[1].name}
-              position="top-32 right-8"
+              position="top-24 sm:top-32 right-1 sm:right-8"
             />
             
             {/* Bottom Left Shelf */}
             <ProductShelf 
               products={shop.sections[2].products} 
               categoryName={shop.sections[2].name}
-              position="bottom-16 left-8"
+              position="bottom-12 sm:bottom-16 left-1 sm:left-8"
             />
             
             {/* Bottom Right Shelf */}
             <ProductShelf 
               products={shop.sections[3].products} 
               categoryName={shop.sections[3].name}
-              position="bottom-16 right-8"
+              position="bottom-12 sm:bottom-16 right-1 sm:right-8"
             />
           </>
         )}

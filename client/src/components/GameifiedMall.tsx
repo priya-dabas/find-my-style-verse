@@ -126,21 +126,21 @@ export const GameifiedMall = () => {
         <div className="absolute bottom-36 right-36 w-3 h-6 bg-amber-900"></div>
       </div>
 
-      {/* Game UI */}
-      <div className="relative z-10 p-8">
-        {/* Header Stats */}
-        <div className="text-center mb-8">
-          <h1 className="text-5xl font-bold text-white mb-4 drop-shadow-2xl pixel-font">
+      {/* Mobile-Responsive Game UI */}
+      <div className="relative z-10 p-4 sm:p-8">
+        {/* Mobile-Optimized Header Stats */}
+        <div className="text-center mb-4 sm:mb-8">
+          <h1 className="text-2xl sm:text-5xl font-bold text-white mb-2 sm:mb-4 drop-shadow-2xl pixel-font">
             🎮 SHOPPING MALL GAME 🛍️
           </h1>
-          <div className="flex justify-center items-center gap-6 flex-wrap">
-            <Badge className="text-lg px-6 py-3 bg-yellow-500 text-black font-bold border-2 border-yellow-600">
+          <div className="flex justify-center items-center gap-2 sm:gap-6 flex-wrap">
+            <Badge className="text-xs sm:text-lg px-3 sm:px-6 py-2 sm:py-3 bg-yellow-500 text-black font-bold border-2 border-yellow-600">
               💰 COINS: {playerStats.coins}
             </Badge>
-            <Badge className="text-lg px-6 py-3 bg-blue-500 text-white font-bold border-2 border-blue-600">
+            <Badge className="text-xs sm:text-lg px-3 sm:px-6 py-2 sm:py-3 bg-blue-500 text-white font-bold border-2 border-blue-600">
               ⭐ LEVEL: {playerStats.level}
             </Badge>
-            <Badge className="text-lg px-6 py-3 bg-green-500 text-white font-bold border-2 border-green-600">
+            <Badge className="text-xs sm:text-lg px-3 sm:px-6 py-2 sm:py-3 bg-green-500 text-white font-bold border-2 border-green-600">
               🎯 EXP: {playerStats.experience}
             </Badge>
             <Badge className="text-lg px-6 py-3 bg-purple-500 text-white font-bold border-2 border-purple-600">

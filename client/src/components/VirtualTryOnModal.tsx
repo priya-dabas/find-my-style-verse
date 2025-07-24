@@ -85,21 +85,21 @@ export const VirtualTryOnModal = ({ product, onClose, onTryOnComplete }: Virtual
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <Card className="max-w-md w-full bg-white" onClick={(e) => e.stopPropagation()}>
-        <CardHeader>
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4">
+      <Card className="max-w-md w-full bg-white max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        <CardHeader className="pb-4">
           <div className="flex items-center justify-between">
-            <CardTitle className="text-xl">Virtual Try-On</CardTitle>
-            <Button variant="ghost" size="icon" onClick={onClose}>
+            <CardTitle className="text-lg sm:text-xl">Virtual Try-On</CardTitle>
+            <Button variant="ghost" size="icon" onClick={onClose} className="h-8 w-8">
               <X className="w-4 h-4" />
             </Button>
           </div>
         </CardHeader>
         
-        <CardContent className="space-y-4">
-          {/* Product Info */}
+        <CardContent className="space-y-3 sm:space-y-4 px-4 sm:px-6">
+          {/* Mobile-Optimized Product Info */}
           <div className="text-center">
-            <div className="w-20 h-20 bg-gray-100 rounded-lg mx-auto mb-3 flex items-center justify-center text-4xl">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-100 rounded-lg mx-auto mb-2 sm:mb-3 flex items-center justify-center text-3xl sm:text-4xl">
               {product.category.includes('T-shirt') && '👕'}
               {product.category.includes('Jeans') && '👖'}
               {product.category.includes('Cap') && '🧢'}
@@ -109,16 +109,16 @@ export const VirtualTryOnModal = ({ product, onClose, onTryOnComplete }: Virtual
               {product.category.includes('Sherwani') && '🤵'}
               {product.category.includes('Jooti') && '👞'}
             </div>
-            <h3 className="font-bold">{product.name}</h3>
-            <Badge className="mt-1">₹{product.price}</Badge>
+            <h3 className="font-bold text-sm sm:text-base">{product.name}</h3>
+            <Badge className="mt-1 text-xs sm:text-sm">₹{product.price}</Badge>
           </div>
 
-          {/* Image Upload */}
-          <div className="space-y-3">
-            <h4 className="font-semibold text-center">Upload Your Photo</h4>
+          {/* Mobile-Optimized Image Upload */}
+          <div className="space-y-2 sm:space-y-3">
+            <h4 className="font-semibold text-center text-sm sm:text-base">Upload Your Photo</h4>
             
             <div 
-              className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-purple-400 transition-colors"
+              className="border-2 border-dashed border-gray-300 rounded-lg p-4 sm:p-6 text-center cursor-pointer hover:border-purple-400 transition-colors touch-manipulation"
               onClick={() => fileInputRef.current?.click()}
             >
               {uploadedImage ? (
@@ -126,14 +126,14 @@ export const VirtualTryOnModal = ({ product, onClose, onTryOnComplete }: Virtual
                   <img 
                     src={uploadedImage} 
                     alt="Uploaded" 
-                    className="w-24 h-24 object-cover rounded-lg mx-auto"
+                    className="w-16 h-16 sm:w-24 sm:h-24 object-cover rounded-lg mx-auto"
                   />
-                  <p className="text-sm text-green-600">✓ Photo uploaded successfully</p>
+                  <p className="text-xs sm:text-sm text-green-600">✓ Photo uploaded successfully</p>
                 </div>
               ) : (
                 <div className="space-y-2">
-                  <Upload className="w-8 h-8 text-gray-400 mx-auto" />
-                  <p className="text-sm text-gray-600">Click to upload your photo</p>
+                  <Upload className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400 mx-auto" />
+                  <p className="text-xs sm:text-sm text-gray-600">Tap to upload your photo</p>
                   <p className="text-xs text-gray-500">PNG, JPG up to 5MB</p>
                 </div>
               )}
@@ -148,36 +148,37 @@ export const VirtualTryOnModal = ({ product, onClose, onTryOnComplete }: Virtual
             />
           </div>
 
-          {/* Action Buttons */}
+          {/* Mobile-Optimized Action Buttons */}
           <div className="flex gap-2">
             <Button 
               variant="outline" 
               onClick={onClose}
               disabled={isGenerating}
-              className="flex-1"
+              className="flex-1 text-sm py-2"
             >
               Cancel
             </Button>
             <Button 
               onClick={handleVirtualTryOn}
               disabled={!uploadedImage || isGenerating}
-              className="flex-1 bg-purple-600 hover:bg-purple-700"
+              className="flex-1 bg-purple-600 hover:bg-purple-700 text-sm py-2"
             >
               {isGenerating ? (
                 <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  Generating...
+                  <Loader2 className="w-3 h-3 mr-1 sm:w-4 sm:h-4 sm:mr-2 animate-spin" />
+                  <span className="hidden sm:inline">Generating...</span>
+                  <span className="sm:hidden">Gen...</span>
                 </>
               ) : (
-                'Try It On!'
+                <span>Try It On!</span>
               )}
             </Button>
           </div>
 
           {isGenerating && (
-            <div className="text-center text-sm text-gray-600">
+            <div className="text-center text-xs sm:text-sm text-gray-600">
               <p>Creating your virtual try-on...</p>
-              <p>This may take a few moments</p>
+              <p className="hidden sm:block">This may take a few moments</p>
             </div>
           )}
         </CardContent>

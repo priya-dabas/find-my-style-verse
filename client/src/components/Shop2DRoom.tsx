@@ -303,8 +303,8 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
         <div className="relative h-[calc(100vh-5rem)] max-w-md mx-auto">
           {/* Four Corner Categories */}
           
-          {/* Top Left Category - Fitted Products */}
-          <div className="absolute top-2 left-2 w-40 h-72">
+          {/* Top Left Category - Large Images */}
+          <div className="absolute top-2 left-2 w-38 h-68">
             <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-2">
               <div className="text-center mb-2">
                 <h4 className="text-xs font-bold text-gray-800">
@@ -312,17 +312,17 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                 </h4>
               </div>
               
-              {/* 3 Products - Properly Fitted */}
-              <div className="flex flex-col gap-1.5">
+              {/* 3 Products - Large Images */}
+              <div className="flex flex-col gap-2">
                 {shop.sections[0]?.products.slice(0, 3).map((product, idx) => (
                   <div 
                     key={idx}
                     className="relative bg-white rounded-lg border-2 border-blue-200 hover:border-blue-400 cursor-pointer transition-all hover:shadow-lg hover:scale-105 overflow-hidden"
                     onClick={() => setSelectedProduct(product)}
                   >
-                    {/* Fitted Product Image Area */}
-                    <div className="h-18 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                      <div className="text-3xl">{getProductEmoji(shop.sections[0]?.name || '')}</div>
+                    {/* Large Product Image Area */}
+                    <div className="h-20 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                      <div className="text-4xl">{getProductEmoji(shop.sections[0]?.name || '')}</div>
                     </div>
                     
                     {/* Minimal Price Badge - Top Corner */}
@@ -348,8 +348,8 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
             </div>
           </div>
 
-          {/* Top Right Category - Fitted Products */}
-          <div className="absolute top-2 right-2 w-40 h-72">
+          {/* Top Right Category - Large Images */}
+          <div className="absolute top-2 right-2 w-38 h-68">
             <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-2">
               <div className="text-center mb-2">
                 <h4 className="text-xs font-bold text-gray-800">
@@ -357,17 +357,17 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                 </h4>
               </div>
               
-              {/* 3 Products - Properly Fitted */}
-              <div className="flex flex-col gap-1.5">
+              {/* 3 Products - Large Images */}
+              <div className="flex flex-col gap-2">
                 {shop.sections[1]?.products.slice(0, 3).map((product, idx) => (
                   <div 
                     key={idx}
                     className="relative bg-white rounded-lg border-2 border-purple-200 hover:border-purple-400 cursor-pointer transition-all hover:shadow-lg hover:scale-105 overflow-hidden"
                     onClick={() => setSelectedProduct(product)}
                   >
-                    {/* Fitted Product Image Area */}
-                    <div className="h-18 bg-gradient-to-br from-purple-100 to-pink-200 flex items-center justify-center">
-                      <div className="text-3xl">{getProductEmoji(shop.sections[1]?.name || '')}</div>
+                    {/* Large Product Image Area */}
+                    <div className="h-20 bg-gradient-to-br from-purple-100 to-pink-200 flex items-center justify-center">
+                      <div className="text-4xl">{getProductEmoji(shop.sections[1]?.name || '')}</div>
                     </div>
                     
                     {/* Minimal Price Badge - Top Corner */}
@@ -393,8 +393,8 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
             </div>
           </div>
 
-          {/* Bottom Left Category - Pushed Higher */}
-          <div className="absolute bottom-40 left-2 w-40 h-72">
+          {/* Bottom Left Category - Large Images */}
+          <div className="absolute bottom-36 left-2 w-38 h-68">
             <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-2">
               <div className="text-center mb-2">
                 <h4 className="text-xs font-bold text-gray-800">
@@ -402,17 +402,17 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                 </h4>
               </div>
               
-              {/* 3 Products - Properly Fitted */}
-              <div className="flex flex-col gap-1.5">
+              {/* 3 Products - Large Images */}
+              <div className="flex flex-col gap-2">
                 {shop.sections[2]?.products.slice(0, 3).map((product, idx) => (
                   <div 
                     key={idx}
                     className="relative bg-white rounded-lg border-2 border-green-200 hover:border-green-400 cursor-pointer transition-all hover:shadow-lg hover:scale-105 overflow-hidden"
                     onClick={() => setSelectedProduct(product)}
                   >
-                    {/* Fitted Product Image Area */}
-                    <div className="h-18 bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center">
-                      <div className="text-3xl">{getProductEmoji(shop.sections[2]?.name || '')}</div>
+                    {/* Large Product Image Area */}
+                    <div className="h-20 bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center">
+                      <div className="text-4xl">{getProductEmoji(shop.sections[2]?.name || '')}</div>
                     </div>
                     
                     {/* Minimal Price Badge - Top Corner */}
@@ -438,8 +438,8 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
             </div>
           </div>
 
-          {/* Bottom Right Category - Pushed Higher */}
-          <div className="absolute bottom-40 right-2 w-40 h-72">
+          {/* Bottom Right Category - Large Images */}
+          <div className="absolute bottom-36 right-2 w-38 h-68">
             <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-2">
               <div className="text-center mb-2">
                 <h4 className="text-xs font-bold text-gray-800">
@@ -447,17 +447,17 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                 </h4>
               </div>
               
-              {/* 3 Products - Properly Fitted */}
-              <div className="flex flex-col gap-1.5">
+              {/* 3 Products - Large Images */}
+              <div className="flex flex-col gap-2">
                 {shop.sections[3]?.products.slice(0, 3).map((product, idx) => (
                   <div 
                     key={idx}
                     className="relative bg-white rounded-lg border-2 border-orange-200 hover:border-orange-400 cursor-pointer transition-all hover:shadow-lg hover:scale-105 overflow-hidden"
                     onClick={() => setSelectedProduct(product)}
                   >
-                    {/* Fitted Product Image Area */}
-                    <div className="h-18 bg-gradient-to-br from-orange-100 to-amber-200 flex items-center justify-center">
-                      <div className="text-3xl">{getProductEmoji(shop.sections[3]?.name || '')}</div>
+                    {/* Large Product Image Area */}
+                    <div className="h-20 bg-gradient-to-br from-orange-100 to-amber-200 flex items-center justify-center">
+                      <div className="text-4xl">{getProductEmoji(shop.sections[3]?.name || '')}</div>
                     </div>
                     
                     {/* Minimal Price Badge - Top Corner */}

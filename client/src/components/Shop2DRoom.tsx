@@ -321,8 +321,8 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                     onClick={() => setSelectedProduct(product)}
                   >
                     {/* Maximum Product Image Area */}
-                    <div className="h-16 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                      <div className="text-3xl">{getProductEmoji(shop.sections[0]?.name || '')}</div>
+                    <div className="h-20 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                      <div className="text-4xl">{getProductEmoji(shop.sections[0]?.name || '')}</div>
                     </div>
                     
                     {/* Minimal Price Badge - Top Corner */}
@@ -366,8 +366,8 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                     onClick={() => setSelectedProduct(product)}
                   >
                     {/* Maximum Product Image Area */}
-                    <div className="h-16 bg-gradient-to-br from-purple-100 to-pink-200 flex items-center justify-center">
-                      <div className="text-3xl">{getProductEmoji(shop.sections[1]?.name || '')}</div>
+                    <div className="h-20 bg-gradient-to-br from-purple-100 to-pink-200 flex items-center justify-center">
+                      <div className="text-4xl">{getProductEmoji(shop.sections[1]?.name || '')}</div>
                     </div>
                     
                     {/* Minimal Price Badge - Top Corner */}
@@ -394,7 +394,7 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
           </div>
 
           {/* Bottom Left Category - Maximum Image Focus */}
-          <div className="absolute bottom-20 left-4 w-36 h-64">
+          <div className="absolute bottom-32 left-4 w-36 h-64">
             <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-2">
               <div className="text-center mb-2">
                 <h4 className="text-xs font-bold text-gray-800">
@@ -411,8 +411,8 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                     onClick={() => setSelectedProduct(product)}
                   >
                     {/* Maximum Product Image Area */}
-                    <div className="h-16 bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center">
-                      <div className="text-3xl">{getProductEmoji(shop.sections[2]?.name || '')}</div>
+                    <div className="h-20 bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center">
+                      <div className="text-4xl">{getProductEmoji(shop.sections[2]?.name || '')}</div>
                     </div>
                     
                     {/* Minimal Price Badge - Top Corner */}
@@ -439,7 +439,7 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
           </div>
 
           {/* Bottom Right Category - Maximum Image Focus */}
-          <div className="absolute bottom-20 right-4 w-36 h-64">
+          <div className="absolute bottom-32 right-4 w-36 h-64">
             <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-2">
               <div className="text-center mb-2">
                 <h4 className="text-xs font-bold text-gray-800">
@@ -456,8 +456,8 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                     onClick={() => setSelectedProduct(product)}
                   >
                     {/* Maximum Product Image Area */}
-                    <div className="h-16 bg-gradient-to-br from-orange-100 to-amber-200 flex items-center justify-center">
-                      <div className="text-3xl">{getProductEmoji(shop.sections[3]?.name || '')}</div>
+                    <div className="h-20 bg-gradient-to-br from-orange-100 to-amber-200 flex items-center justify-center">
+                      <div className="text-4xl">{getProductEmoji(shop.sections[3]?.name || '')}</div>
                     </div>
                     
                     {/* Minimal Price Badge - Top Corner */}
@@ -483,8 +483,8 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
             </div>
           </div>
 
-          {/* Central Meera Avatar - Compact */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          {/* Bottom Meera Avatar - Compact */}
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
             <div className="relative">
               {/* Meera Card - Smaller */}
               <Card className="bg-white shadow-xl border-4 border-pink-300">

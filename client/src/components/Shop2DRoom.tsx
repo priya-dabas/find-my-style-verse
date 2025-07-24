@@ -185,20 +185,29 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
     ));
   };
 
-  const ProductShelf = ({ products, categoryName, position }: { products: Product[], categoryName: string, position: string }) => (
-    <div className={`absolute ${position}`}>
-      <div className="bg-amber-900 p-1 sm:p-2 rounded-t-lg border-2 border-amber-800">
-        <h3 className="text-white font-bold text-xs sm:text-sm text-center">{categoryName}</h3>
+  const CleanProductRack = ({ products, categoryName, rackNumber }: { products: Product[], categoryName: string, rackNumber: number }) => (
+    <div className="bg-white rounded-lg shadow-lg border-2 border-gray-200 overflow-hidden">
+      {/* Rack Header */}
+      <div className="bg-gradient-to-r from-gray-800 to-gray-700 p-2 sm:p-3">
+        <div className="flex items-center justify-center gap-2">
+          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-yellow-400 rounded-full flex items-center justify-center text-black font-bold text-xs sm:text-sm">
+            {rackNumber}
+          </div>
+          <h3 className="text-white font-bold text-sm sm:text-base text-center">{categoryName}</h3>
+        </div>
       </div>
-      <div className="bg-amber-700 p-2 sm:p-3 rounded-b-lg border-2 border-amber-800 border-t-0">
-        <div className="grid grid-cols-5 gap-1 sm:gap-2">
+      
+      {/* Product Grid */}
+      <div className="p-3 sm:p-4 bg-gray-50">
+        <div className="grid grid-cols-5 gap-2 sm:gap-3">
           {products.map((product) => (
             <div
               key={product.id}
               className="relative group cursor-pointer"
               onClick={() => setSelectedProduct(product)}
             >
-              <div className="w-10 h-10 sm:w-16 sm:h-16 bg-white rounded border-2 border-gray-300 flex items-center justify-center text-lg sm:text-2xl hover:border-yellow-400 transition-all duration-200 group-hover:scale-110">
+              {/* Product Item */}
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-lg border-2 border-gray-200 flex items-center justify-center text-xl sm:text-2xl hover:border-blue-400 hover:shadow-md transition-all duration-200 group-hover:scale-105">
                 {categoryName.includes('T-shirt') && '👕'}
                 {categoryName.includes('Jeans') && '👖'}
                 {categoryName.includes('Cap') && '🧢'}
@@ -213,22 +222,22 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                 {categoryName.includes('Rug') && '🏠'}
               </div>
               
-              {/* Mobile-Optimized Try-On Button */}
+              {/* Try-On Button */}
               <Button
                 size="sm"
                 variant="outline"
-                className="absolute -top-1 -right-1 w-4 h-4 sm:w-6 sm:h-6 p-0 bg-white border-2 border-yellow-400 hover:bg-yellow-100 text-xs"
+                className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 p-0 bg-blue-500 hover:bg-blue-600 border-0 text-white rounded-full shadow-lg"
                 onClick={(e) => {
                   e.stopPropagation();
                   handleTryOn(product);
                 }}
               >
-                <HelpCircle className="w-2 h-2 sm:w-3 sm:h-3 text-yellow-600" />
+                <HelpCircle className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
               </Button>
               
-              {/* Mobile-Responsive Price Tag */}
-              <div className="absolute -bottom-1 sm:-bottom-2 left-1/2 transform -translate-x-1/2">
-                <Badge className="text-xs px-1 py-0 bg-green-600 text-white">
+              {/* Price Tag */}
+              <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2">
+                <Badge className="text-xs px-1.5 py-0.5 bg-green-500 text-white rounded-full shadow-sm">
                   ₹{product.price}
                 </Badge>
               </div>
@@ -264,107 +273,67 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
         </div>
       </div>
 
-      {/* Mobile-Optimized 2D Room Layout */}
-      <div className="relative w-full h-screen pt-12 sm:pt-20">
-        {/* Floor */}
-        <div className="absolute bottom-0 w-full h-1/3 bg-gradient-to-t from-amber-800 to-amber-600 border-t-4 border-amber-900"></div>
-        
-        {/* Back Wall */}
-        <div className="absolute top-12 sm:top-20 w-full h-2/3 bg-gradient-to-b from-orange-300 to-orange-400"></div>
-        
-        {/* Mobile-Responsive Shop Sign */}
-        <div className="absolute top-16 sm:top-24 left-1/2 transform -translate-x-1/2 bg-black text-white px-3 sm:px-8 py-1 sm:py-2 rounded-lg border-2 sm:border-4 border-yellow-400">
-          <h2 className="text-lg sm:text-2xl font-bold">{shop.name.toUpperCase()}</h2>
-        </div>
-
-        {/* Mobile-Optimized Meera - AI Assistant in Center */}
-        <div className="absolute bottom-24 sm:bottom-32 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="relative">
-            {/* Mobile-Responsive Meera Avatar */}
-            <div 
-              className="w-16 h-20 sm:w-24 sm:h-32 bg-gradient-to-b from-pink-200 to-pink-300 rounded-full border-2 sm:border-4 border-white shadow-2xl cursor-pointer hover:scale-110 transition-transform duration-300 flex flex-col items-center justify-center"
-            >
-              <div className="text-2xl sm:text-4xl mb-1">👩🏻‍💼</div>
-              <div className="text-xs font-bold text-gray-700">MEERA</div>
-            </div>
-            
-            {/* Mobile-Responsive Speech Bubble */}
-            <div className="absolute -top-16 sm:-top-20 left-1/2 transform -translate-x-1/2 bg-white rounded-lg p-2 sm:p-3 border-2 border-gray-300 shadow-lg min-w-32 max-w-48 sm:min-w-48 sm:max-w-64">
-              <p className="text-xs sm:text-sm font-medium text-center line-clamp-3">{meeraMessage}</p>
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
-                <div className="w-0 h-0 border-l-4 border-r-4 border-t-8 border-transparent border-t-white"></div>
-              </div>
-            </div>
-
-            {/* Mobile-Optimized Voice Controls */}
-            <div className="absolute -bottom-6 sm:-bottom-8 left-1/2 transform -translate-x-1/2 flex gap-1">
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => setIsVoiceEnabled(!isVoiceEnabled)}
-                className={`${isVoiceEnabled ? 'bg-green-100 border-green-400' : 'bg-gray-100'} p-1 w-8 h-8 sm:w-auto sm:h-auto`}
-              >
-                {isVoiceEnabled ? <Volume2 className="w-3 h-3" /> : <VolumeX className="w-3 h-3" />}
-              </Button>
-              
-              <Button
-                size="sm"
-                variant={isListening ? "default" : "outline"}
-                onClick={isListening ? stopListening : startListening}
-                className={`${isListening ? 'bg-red-500 hover:bg-red-600 text-white' : 'bg-blue-100 border-blue-400'} p-1 w-8 h-8 sm:w-auto sm:h-auto`}
-              >
-                {isListening ? <MicOff className="w-3 h-3" /> : <Mic className="w-3 h-3" />}
-              </Button>
-            </div>
-            
-            {/* Mobile-Responsive Voice Instructions */}
-            <div className="absolute -bottom-10 sm:-bottom-14 left-1/2 transform -translate-x-1/2 text-center">
-              <p className="text-xs text-gray-600">
-                {isListening ? "🎤 Listening..." : "Tap mic"}
-              </p>
-            </div>
+      {/* Clean Mobile Shop Layout */}
+      <div className="relative w-full min-h-screen pt-12 sm:pt-20 bg-gradient-to-b from-blue-50 to-gray-100">
+        {/* Shop Header */}
+        <div className="text-center mb-4 sm:mb-6">
+          <div className="inline-block bg-white rounded-lg shadow-lg px-4 sm:px-8 py-2 sm:py-3 border-2 border-blue-200">
+            <h2 className="text-lg sm:text-2xl font-bold text-gray-800">{shop.name.toUpperCase()}</h2>
+            <p className="text-xs sm:text-sm text-gray-600">Select items to view details or try on</p>
           </div>
         </div>
 
-        {/* Mobile-Responsive Product Shelves Layout */}
-        {shop.sections.length >= 4 && (
-          <>
-            {/* Top Left Shelf */}
-            <ProductShelf 
-              products={shop.sections[0].products} 
-              categoryName={shop.sections[0].name}
-              position="top-24 sm:top-32 left-1 sm:left-8"
-            />
+        {/* Clean Meera Assistant */}
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="inline-flex items-center bg-white rounded-full shadow-lg p-2 sm:p-3 border-2 border-pink-200">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-pink-100 to-pink-200 rounded-full flex items-center justify-center mr-3 sm:mr-4">
+              <div className="text-xl sm:text-2xl">👩🏻‍💼</div>
+            </div>
+            <div className="text-left">
+              <h3 className="text-sm sm:text-base font-bold text-gray-800">Meera - AI Assistant</h3>
+              <p className="text-xs sm:text-sm text-gray-600 max-w-48 sm:max-w-64">{meeraMessage}</p>
+            </div>
+          </div>
+          
+          {/* Voice Controls */}
+          <div className="flex justify-center gap-2 mt-3">
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => setIsVoiceEnabled(!isVoiceEnabled)}
+              className={`${isVoiceEnabled ? 'bg-green-50 border-green-300 text-green-700' : 'bg-gray-50'} px-3 py-2`}
+            >
+              {isVoiceEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+            </Button>
             
-            {/* Top Right Shelf */}
-            <ProductShelf 
-              products={shop.sections[1].products} 
-              categoryName={shop.sections[1].name}
-              position="top-24 sm:top-32 right-1 sm:right-8"
-            />
-            
-            {/* Bottom Left Shelf */}
-            <ProductShelf 
-              products={shop.sections[2].products} 
-              categoryName={shop.sections[2].name}
-              position="bottom-12 sm:bottom-16 left-1 sm:left-8"
-            />
-            
-            {/* Bottom Right Shelf */}
-            <ProductShelf 
-              products={shop.sections[3].products} 
-              categoryName={shop.sections[3].name}
-              position="bottom-12 sm:bottom-16 right-1 sm:right-8"
-            />
-          </>
-        )}
+            <Button
+              size="sm"
+              variant={isListening ? "default" : "outline"}
+              onClick={isListening ? stopListening : startListening}
+              className={`${isListening ? 'bg-red-500 hover:bg-red-600 text-white' : 'bg-blue-50 border-blue-300 text-blue-700'} px-3 py-2`}
+            >
+              {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+              <span className="ml-2 text-xs hidden sm:inline">
+                {isListening ? "Stop" : "Talk"}
+              </span>
+            </Button>
+          </div>
+        </div>
 
-        {/* Decorative Elements */}
-        <div className="absolute top-28 left-4 w-8 h-16 bg-amber-800 rounded"></div>
-        <div className="absolute top-28 right-4 w-8 h-16 bg-amber-800 rounded"></div>
-        
-        {/* Floor Pattern */}
-        <div className="absolute bottom-0 w-full h-8 bg-gradient-to-r from-amber-900 via-amber-700 to-amber-900 opacity-50"></div>
+        {/* Clean Product Racks Grid */}
+        <div className="px-4 sm:px-8 pb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-6xl mx-auto">
+            {shop.sections.slice(0, 4).map((section, index) => (
+              <CleanProductRack
+                key={section.name}
+                products={section.products}
+                categoryName={section.name}
+                rackNumber={index + 1}
+              />
+            ))}
+          </div>
+        </div>
+
       </div>
 
       {/* Virtual Try-On Modal */}
@@ -399,16 +368,16 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
         </div>
       )}
 
-      {/* Product Detail Modal */}
+      {/* Clean Product Detail Modal */}
       {selectedProduct && (
         <div 
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedProduct(null)}
         >
-          <Card className="max-w-md w-full bg-white" onClick={(e) => e.stopPropagation()}>
-            <CardContent className="p-6">
+          <Card className="max-w-md w-full bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <CardContent className="p-4 sm:p-6">
               <div className="text-center mb-4">
-                <div className="w-32 h-32 bg-gray-100 rounded-lg mx-auto mb-4 flex items-center justify-center text-6xl">
+                <div className="w-20 h-20 sm:w-32 sm:h-32 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl mx-auto mb-4 flex items-center justify-center text-4xl sm:text-6xl border-2 border-gray-200">
                   {selectedProduct.category.includes('T-shirt') && '👕'}
                   {selectedProduct.category.includes('Jeans') && '👖'}
                   {selectedProduct.category.includes('Cap') && '🧢'}
@@ -423,8 +392,8 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                   {selectedProduct.category.includes('Rug') && '🏠'}
                 </div>
                 
-                <h3 className="text-xl font-bold mb-2">{selectedProduct.name}</h3>
-                <p className="text-gray-600 mb-3 text-sm">{selectedProduct.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold mb-2 text-gray-800">{selectedProduct.name}</h3>
+                <p className="text-gray-600 mb-3 text-sm leading-relaxed">{selectedProduct.description}</p>
                 
                 <div className="flex items-center justify-center gap-2 mb-4">
                   {renderStars(selectedProduct.rating)}
@@ -432,8 +401,13 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                 </div>
               </div>
               
-              <div className="flex items-center justify-between">
-                <Badge className="text-xl font-bold bg-green-600">₹{selectedProduct.price}</Badge>
+              <div className="space-y-3">
+                <div className="text-center">
+                  <Badge className="text-lg sm:text-xl font-bold bg-green-500 text-white px-4 py-2 rounded-full">
+                    ₹{selectedProduct.price}
+                  </Badge>
+                </div>
+                
                 <div className="flex gap-2">
                   <Button
                     variant="outline"
@@ -441,9 +415,11 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                       handleTryOn(selectedProduct);
                       setSelectedProduct(null);
                     }}
+                    className="flex-1 border-blue-300 text-blue-700 hover:bg-blue-50"
                   >
                     <HelpCircle className="w-4 h-4 mr-2" />
-                    Try On
+                    <span className="hidden sm:inline">Try On</span>
+                    <span className="sm:hidden">Try</span>
                   </Button>
                   <Button
                     onClick={() => {
@@ -451,10 +427,11 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                       setSelectedProduct(null);
                     }}
                     disabled={playerStats.coins < selectedProduct.price}
-                    className="bg-purple-600 hover:bg-purple-700"
+                    className="flex-1 bg-green-600 hover:bg-green-700 text-white"
                   >
                     <ShoppingCart className="w-4 h-4 mr-2" />
-                    Buy Now
+                    <span className="hidden sm:inline">Buy Now</span>
+                    <span className="sm:hidden">Buy</span>
                   </Button>
                 </div>
               </div>

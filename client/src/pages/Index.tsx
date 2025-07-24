@@ -1,7 +1,7 @@
-import { EnhancedShoppingRoom } from '@/components/EnhancedShoppingRoom';
+import { GameifiedMall } from '@/components/GameifiedMall';
 
 const Index = () => {
-  return <EnhancedShoppingRoom />;
+  return <GameifiedMall />;
 };
 
 export default Index;

@@ -303,41 +303,44 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
         <div className="relative h-[calc(100vh-5rem)] max-w-md mx-auto">
           {/* Four Corner Categories */}
           
-          {/* Top Left Category - Clean Vertical Stack */}
-          <div className="absolute top-4 left-4 w-28 h-40">
-            <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-3">
-              <div className="text-center mb-3">
-                <h4 className="text-sm font-bold text-gray-800 leading-tight">
+          {/* Top Left Category - Image-Focused Cards */}
+          <div className="absolute top-4 left-4 w-32 h-52">
+            <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-2">
+              <div className="text-center mb-2">
+                <h4 className="text-xs font-bold text-gray-800">
                   {shop.sections[0]?.name || 'Category 1'}
                 </h4>
               </div>
               
-              {/* 3 Products Stacked Vertically - Bigger Cards */}
+              {/* 3 Products - Large Image Focus */}
               <div className="flex flex-col gap-2">
                 {shop.sections[0]?.products.slice(0, 3).map((product, idx) => (
                   <div 
                     key={idx}
-                    className="relative bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-2 border-2 border-blue-200 hover:border-blue-400 cursor-pointer transition-all hover:shadow-md hover:scale-105"
+                    className="relative bg-white rounded-lg border-2 border-blue-200 hover:border-blue-400 cursor-pointer transition-all hover:shadow-lg hover:scale-105 overflow-hidden"
                     onClick={() => setSelectedProduct(product)}
                   >
-                    <div className="flex items-center gap-2">
-                      <div className="text-lg flex-shrink-0">{getProductEmoji(shop.sections[0]?.name || '')}</div>
-                      <div className="flex-1 min-w-0">
-                        <div className="text-xs font-bold text-gray-800 truncate">{product.name}</div>
-                        <div className="text-xs font-semibold text-green-600">₹{product.price}</div>
-                      </div>
+                    {/* Large Product Image */}
+                    <div className="h-12 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                      <div className="text-2xl">{getProductEmoji(shop.sections[0]?.name || '')}</div>
                     </div>
+                    
+                    {/* Price Badge */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-blue-600 text-white text-center py-1">
+                      <span className="text-xs font-bold">₹{product.price}</span>
+                    </div>
+                    
                     {/* Try-on button */}
                     <Button
                       size="sm"
                       variant="outline"
-                      className="absolute -top-1 -right-1 w-5 h-5 p-0 bg-blue-500 hover:bg-blue-600 border-0 text-white rounded-full shadow-md"
+                      className="absolute top-1 right-1 w-6 h-6 p-0 bg-blue-500 hover:bg-blue-600 border-0 text-white rounded-full shadow-lg"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleTryOn(product);
                       }}
                     >
-                      <HelpCircle className="w-2.5 h-2.5" />
+                      <HelpCircle className="w-3 h-3" />
                     </Button>
                   </div>
                 ))}
@@ -345,41 +348,44 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
             </div>
           </div>
 
-          {/* Top Right Category - Clean Vertical Stack */}
-          <div className="absolute top-4 right-4 w-28 h-40">
-            <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-3">
-              <div className="text-center mb-3">
-                <h4 className="text-sm font-bold text-gray-800 leading-tight">
+          {/* Top Right Category - Image-Focused Cards */}
+          <div className="absolute top-4 right-4 w-32 h-52">
+            <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-2">
+              <div className="text-center mb-2">
+                <h4 className="text-xs font-bold text-gray-800">
                   {shop.sections[1]?.name || 'Category 2'}
                 </h4>
               </div>
               
-              {/* 3 Products Stacked Vertically - Bigger Cards */}
+              {/* 3 Products - Large Image Focus */}
               <div className="flex flex-col gap-2">
                 {shop.sections[1]?.products.slice(0, 3).map((product, idx) => (
                   <div 
                     key={idx}
-                    className="relative bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-2 border-2 border-purple-200 hover:border-purple-400 cursor-pointer transition-all hover:shadow-md hover:scale-105"
+                    className="relative bg-white rounded-lg border-2 border-purple-200 hover:border-purple-400 cursor-pointer transition-all hover:shadow-lg hover:scale-105 overflow-hidden"
                     onClick={() => setSelectedProduct(product)}
                   >
-                    <div className="flex items-center gap-2">
-                      <div className="text-lg flex-shrink-0">{getProductEmoji(shop.sections[1]?.name || '')}</div>
-                      <div className="flex-1 min-w-0">
-                        <div className="text-xs font-bold text-gray-800 truncate">{product.name}</div>
-                        <div className="text-xs font-semibold text-green-600">₹{product.price}</div>
-                      </div>
+                    {/* Large Product Image */}
+                    <div className="h-12 bg-gradient-to-br from-purple-100 to-pink-200 flex items-center justify-center">
+                      <div className="text-2xl">{getProductEmoji(shop.sections[1]?.name || '')}</div>
                     </div>
+                    
+                    {/* Price Badge */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-purple-600 text-white text-center py-1">
+                      <span className="text-xs font-bold">₹{product.price}</span>
+                    </div>
+                    
                     {/* Try-on button */}
                     <Button
                       size="sm"
                       variant="outline"
-                      className="absolute -top-1 -right-1 w-5 h-5 p-0 bg-blue-500 hover:bg-blue-600 border-0 text-white rounded-full shadow-md"
+                      className="absolute top-1 right-1 w-6 h-6 p-0 bg-blue-500 hover:bg-blue-600 border-0 text-white rounded-full shadow-lg"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleTryOn(product);
                       }}
                     >
-                      <HelpCircle className="w-2.5 h-2.5" />
+                      <HelpCircle className="w-3 h-3" />
                     </Button>
                   </div>
                 ))}
@@ -387,41 +393,44 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
             </div>
           </div>
 
-          {/* Bottom Left Category - Clean Vertical Stack */}
-          <div className="absolute bottom-20 left-4 w-28 h-40">
-            <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-3">
-              <div className="text-center mb-3">
-                <h4 className="text-sm font-bold text-gray-800 leading-tight">
+          {/* Bottom Left Category - Image-Focused Cards */}
+          <div className="absolute bottom-20 left-4 w-32 h-52">
+            <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-2">
+              <div className="text-center mb-2">
+                <h4 className="text-xs font-bold text-gray-800">
                   {shop.sections[2]?.name || 'Category 3'}
                 </h4>
               </div>
               
-              {/* 3 Products Stacked Vertically - Bigger Cards */}
+              {/* 3 Products - Large Image Focus */}
               <div className="flex flex-col gap-2">
                 {shop.sections[2]?.products.slice(0, 3).map((product, idx) => (
                   <div 
                     key={idx}
-                    className="relative bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-2 border-2 border-green-200 hover:border-green-400 cursor-pointer transition-all hover:shadow-md hover:scale-105"
+                    className="relative bg-white rounded-lg border-2 border-green-200 hover:border-green-400 cursor-pointer transition-all hover:shadow-lg hover:scale-105 overflow-hidden"
                     onClick={() => setSelectedProduct(product)}
                   >
-                    <div className="flex items-center gap-2">
-                      <div className="text-lg flex-shrink-0">{getProductEmoji(shop.sections[2]?.name || '')}</div>
-                      <div className="flex-1 min-w-0">
-                        <div className="text-xs font-bold text-gray-800 truncate">{product.name}</div>
-                        <div className="text-xs font-semibold text-green-600">₹{product.price}</div>
-                      </div>
+                    {/* Large Product Image */}
+                    <div className="h-12 bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center">
+                      <div className="text-2xl">{getProductEmoji(shop.sections[2]?.name || '')}</div>
                     </div>
+                    
+                    {/* Price Badge */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-green-600 text-white text-center py-1">
+                      <span className="text-xs font-bold">₹{product.price}</span>
+                    </div>
+                    
                     {/* Try-on button */}
                     <Button
                       size="sm"
                       variant="outline"
-                      className="absolute -top-1 -right-1 w-5 h-5 p-0 bg-blue-500 hover:bg-blue-600 border-0 text-white rounded-full shadow-md"
+                      className="absolute top-1 right-1 w-6 h-6 p-0 bg-blue-500 hover:bg-blue-600 border-0 text-white rounded-full shadow-lg"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleTryOn(product);
                       }}
                     >
-                      <HelpCircle className="w-2.5 h-2.5" />
+                      <HelpCircle className="w-3 h-3" />
                     </Button>
                   </div>
                 ))}
@@ -429,41 +438,44 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
             </div>
           </div>
 
-          {/* Bottom Right Category - Clean Vertical Stack */}
-          <div className="absolute bottom-20 right-4 w-28 h-40">
-            <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-3">
-              <div className="text-center mb-3">
-                <h4 className="text-sm font-bold text-gray-800 leading-tight">
+          {/* Bottom Right Category - Image-Focused Cards */}
+          <div className="absolute bottom-20 right-4 w-32 h-52">
+            <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 h-full p-2">
+              <div className="text-center mb-2">
+                <h4 className="text-xs font-bold text-gray-800">
                   {shop.sections[3]?.name || 'Category 4'}
                 </h4>
               </div>
               
-              {/* 3 Products Stacked Vertically - Bigger Cards */}
+              {/* 3 Products - Large Image Focus */}
               <div className="flex flex-col gap-2">
                 {shop.sections[3]?.products.slice(0, 3).map((product, idx) => (
                   <div 
                     key={idx}
-                    className="relative bg-gradient-to-r from-orange-50 to-amber-50 rounded-lg p-2 border-2 border-orange-200 hover:border-orange-400 cursor-pointer transition-all hover:shadow-md hover:scale-105"
+                    className="relative bg-white rounded-lg border-2 border-orange-200 hover:border-orange-400 cursor-pointer transition-all hover:shadow-lg hover:scale-105 overflow-hidden"
                     onClick={() => setSelectedProduct(product)}
                   >
-                    <div className="flex items-center gap-2">
-                      <div className="text-lg flex-shrink-0">{getProductEmoji(shop.sections[3]?.name || '')}</div>
-                      <div className="flex-1 min-w-0">
-                        <div className="text-xs font-bold text-gray-800 truncate">{product.name}</div>
-                        <div className="text-xs font-semibold text-green-600">₹{product.price}</div>
-                      </div>
+                    {/* Large Product Image */}
+                    <div className="h-12 bg-gradient-to-br from-orange-100 to-amber-200 flex items-center justify-center">
+                      <div className="text-2xl">{getProductEmoji(shop.sections[3]?.name || '')}</div>
                     </div>
+                    
+                    {/* Price Badge */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-orange-600 text-white text-center py-1">
+                      <span className="text-xs font-bold">₹{product.price}</span>
+                    </div>
+                    
                     {/* Try-on button */}
                     <Button
                       size="sm"
                       variant="outline"
-                      className="absolute -top-1 -right-1 w-5 h-5 p-0 bg-blue-500 hover:bg-blue-600 border-0 text-white rounded-full shadow-md"
+                      className="absolute top-1 right-1 w-6 h-6 p-0 bg-blue-500 hover:bg-blue-600 border-0 text-white rounded-full shadow-lg"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleTryOn(product);
                       }}
                     >
-                      <HelpCircle className="w-2.5 h-2.5" />
+                      <HelpCircle className="w-3 h-3" />
                     </Button>
                   </div>
                 ))}
@@ -471,19 +483,16 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
             </div>
           </div>
 
-          {/* Central Meera Avatar - Exactly like wireframe */}
+          {/* Central Meera Avatar - Compact */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div className="relative">
-              {/* Meera Card */}
+              {/* Meera Card - Smaller */}
               <Card className="bg-white shadow-xl border-4 border-pink-300">
-                <CardContent className="p-4 text-center">
-                  <div className="w-20 h-20 bg-gradient-to-br from-pink-100 to-pink-200 rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-pink-300">
-                    <div className="text-3xl">👩🏻‍💼</div>
+                <CardContent className="p-3 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-pink-100 to-pink-200 rounded-full flex items-center justify-center mx-auto mb-2 border-4 border-pink-300">
+                    <div className="text-2xl">👩🏻‍💼</div>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-800 mb-2">Meera</h3>
-                  <p className="text-xs text-gray-600 mb-3 leading-tight max-w-32">
-                    {meeraMessage}
-                  </p>
+                  <h3 className="text-sm font-bold text-gray-800 mb-2">Meera</h3>
                   
                   {/* Voice Controls - Compact */}
                   <div className="flex justify-center gap-1">
@@ -491,7 +500,7 @@ export const Shop2DRoom = ({ shop, onBack, playerStats, onStatsUpdate }: Shop2DR
                       size="sm"
                       variant="outline"
                       onClick={() => setIsVoiceEnabled(!isVoiceEnabled)}
-                      className={`w-8 h-8 p-0 ${isVoiceEnabled ? 'bg-green-50 border-green-300 text-green-700' : 'bg-gray-50'}`}
+                      className={`w-7 h-7 p-0 ${isVoiceEnabled ? 'bg-green-50 border-green-300 text-green-700' : 'bg-gray-50'}`}
                     >
                       {isVoiceEnabled ? <Volume2 className="w-3 h-3" /> : <VolumeX className="w-3 h-3" />}
                     </Button>

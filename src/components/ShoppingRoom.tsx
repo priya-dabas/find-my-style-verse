@@ -1,9 +1,9 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment, Text3D, Center, Float } from '@react-three/drei';
 import { Suspense, useState } from 'react';
-import { ShopDisplay } from './ShopDisplay';
+import { Shop } from './Shop';
 import { GameUI } from './GameUI';
-import { VoiceShopkeeper } from './VoiceShopkeeper';
+import { AIShopkeeper } from './AIShopkeeper';
 import { ShopData } from '../types/shop';
 
 const shopData: ShopData[] = [
@@ -118,7 +118,7 @@ export const ShoppingRoom = () => {
           
           {/* Shops */}
           {shopData.map((shop) => (
-            <ShopDisplay
+            <Shop
               key={shop.id}
               data={shop}
               isSelected={selectedShop === shop.id}
@@ -141,9 +141,9 @@ export const ShoppingRoom = () => {
       {/* UI Overlay */}
       <GameUI playerStats={playerStats} onStatsUpdate={setPlayerStats} />
       
-      {/* Voice Shopkeeper Dialog */}
+      {/* AI Shopkeeper Dialog */}
       {selectedShop && (
-        <VoiceShopkeeper
+        <AIShopkeeper
           shop={shopData.find(s => s.id === selectedShop)!}
           onClose={() => setSelectedShop(null)}
           playerStats={playerStats}

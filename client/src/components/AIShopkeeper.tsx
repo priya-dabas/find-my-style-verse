@@ -14,7 +14,7 @@ import {
   Send
 } from 'lucide-react';
 import { ShopData, PlayerStats, GameEvent } from '../types/shop';
-import { toast } from 'sonner';
+import { useToast } from '@/hooks/use-toast';
 
 interface AIShopkeeperProps {
   shop: ShopData;
@@ -24,6 +24,7 @@ interface AIShopkeeperProps {
 }
 
 export const AIShopkeeper = ({ shop, onClose, playerStats, onStatsUpdate }: AIShopkeeperProps) => {
+  const { toast } = useToast();
   const [message, setMessage] = useState('');
   const [conversation, setConversation] = useState<Array<{role: 'user' | 'shopkeeper', content: string}>>([]);
   const [isVoiceEnabled, setIsVoiceEnabled] = useState(false);
@@ -111,7 +112,10 @@ export const AIShopkeeper = ({ shop, onClose, playerStats, onStatsUpdate }: AISh
       if (newStats.experience >= newStats.level * 100) {
         newStats.level += 1;
         newStats.experience = 0;
-        toast(`🎉 Level up! You're now level ${newStats.level}!`);
+        toast({
+          title: "Level Up!",
+          description: `You're now level ${newStats.level}!`,
+        });
       }
       
       onStatsUpdate(newStats);
@@ -120,7 +124,11 @@ export const AIShopkeeper = ({ shop, onClose, playerStats, onStatsUpdate }: AISh
 
   const handlePurchase = (item: string, sectionName: string) => {
     if (playerStats.coins < 50) {
-      toast('❌ Not enough coins! You need 50 coins.');
+      toast({
+        title: "Not enough coins!",
+        description: "You need 50 coins.",
+        variant: "destructive",
+      });
       return;
     }
     
@@ -141,11 +149,17 @@ export const AIShopkeeper = ({ shop, onClose, playerStats, onStatsUpdate }: AISh
     if (newStats.experience >= newStats.level * 100) {
       newStats.level += 1;
       newStats.experience = newStats.experience % 100;
-      toast(`🎉 Level up! You're now level ${newStats.level}!`);
+      toast({
+        title: "Level Up!",
+        description: `You're now level ${newStats.level}!`,
+      });
     }
     
     onStatsUpdate(newStats);
-    toast(`✅ Purchased ${item} for 50 coins! +20 EXP`);
+    toast({
+      title: "Purchase successful!",
+      description: `Purchased ${item} for 50 coins! +20 EXP`,
+    });
     
     // Add purchase message to conversation
     setConversation(prev => [...prev, 

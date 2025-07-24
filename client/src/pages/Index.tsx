@@ -1,7 +1,7 @@
-import { ShoppingRoom } from '@/components/ShoppingRoom';
+import { ShoppingRoomFallback } from '@/components/ShoppingRoom-Fallback';
 
 const Index = () => {
-  return <ShoppingRoom />;
+  return <ShoppingRoomFallback />;
 };
 
 export default Index;

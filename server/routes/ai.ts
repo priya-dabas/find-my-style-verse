@@ -28,7 +28,7 @@ router.post('/virtual-tryon', async (req, res) => {
       quality: "standard",
     });
 
-    const generatedImageUrl = response.data[0]?.url;
+    const generatedImageUrl = response.data?.[0]?.url;
 
     res.json({
       success: true,
